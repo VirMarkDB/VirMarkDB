@@ -30,22 +30,22 @@ orf_length_raw <- selected_orfs_log %>%
     group_id,
     marker,
     orf_name,
-    target_length_aa
+    marker_length_AA
   )
 
 orf_length_summary <- orf_length_raw %>%
   group_by(group_id, marker) %>%
   summarise(
     n_orfs = n(),
-    min_length = min(target_length_aa, na.rm = TRUE),
-    median_length = median(target_length_aa, na.rm = TRUE),
-    mean_length = mean(target_length_aa, na.rm = TRUE),
-    max_length = max(target_length_aa, na.rm = TRUE),
+    min_length = min(marker_length_AA, na.rm = TRUE),
+    median_length = median(marker_length_AA, na.rm = TRUE),
+    mean_length = mean(marker_length_AA, na.rm = TRUE),
+    max_length = max(marker_length_AA, na.rm = TRUE),
     .groups = "drop"
   )
 
 p_orf_length <- orf_length_raw %>%
-  ggplot(aes(x = marker_group_id, y = target_length_aa)) +
+  ggplot(aes(x = marker_group_id, y = marker_length_AA)) +
   geom_boxplot(outlier.size = 0.5) +
   coord_flip() +
   facet_wrap(~marker, scales = "free_y") +
@@ -96,7 +96,8 @@ write_lines(
 
 # Family x marker barplot
 marker_order <- c(  "atpase",  "dnapol",  "majorcapsid",  "primase",  "rnapol1",  "rnapol2",  "tf2s",  "vltf3","rdrp", "g23")
-marker_colors <- c(atpase= "#4E79A7",dnapol= "#F28E2B",majorcapsid= "#59A14F",primase= "#E15759",rnapol1= "#B07AA1",rnapol2= "#9C755F",tf2s= "#76B7B2",vltf3= "#EDC948")
+marker_colors <- c(atpase= "#4E79A7",dnapol= "#F28E2B",majorcapsid= "#59A14F",primase= "#E15759",rnapol1= "#B07AA1",rnapol2= "#9C755F",tf2s= "#76B7B2",vltf3= "#EDC948",rdrp = "#86BCB6",
+g23 = "#B6992D")
 
 p_family_marker_summary  <- selected_orfs_log %>%
   distinct(Family, marker, virus_id) %>%
