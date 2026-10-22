@@ -20,7 +20,7 @@ dir.create(OUT_LOGS, recursive = TRUE, showWarnings = FALSE)
 taxonomy_all <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 
 
-# INPUTS
+# Inputs
 manifest <- read_tsv(MANIFEST_TSV, show_col_types = FALSE)
 
 marker_map <- read_tsv(MAP_TSV, show_col_types = FALSE) %>%
@@ -29,7 +29,7 @@ marker_map <- read_tsv(MAP_TSV, show_col_types = FALSE) %>%
   distinct(marker_group_id, group_id, marker)
 
 
-# READ HMMER DOMTBLOUT TABLES
+# Read hmmer DOMBLOUT tables
 tbl_files <- list.files(HMM_DIR, pattern = "\\.tbl$", full.names = TRUE)
 
 domtblout_cols <- c(
@@ -106,8 +106,18 @@ read_domtblout <- function(tbl) {
 
 tblout <- map_dfr(tbl_files, read_domtblout)
 
+# Track sequence counts throughout the selection steps
+filter_log <- tibble()
+log_step <- function(data, step) {
+  filter_log <<- bind_rows(filter_log, data %>%
+    group_by(marker_group_id) %>%
+    summarise(n_hits = n(), n_orfs = n_distinct(orf_name), .groups = "drop") %>%
+    mutate(step = step))
+}
+log_step(tblout, "01_Initial HMMER hits")
 
-# RECOVER PRODIGAL DESCRIPTIONS FROM ORIGINAL ORF FASTA
+
+# Recover PRODIGAL descriptions from original ORF fasta
 # This is required because hmmscan reports the HMM description instead of the ORF description.
 read_orf_headers <- function(faa) {
   headers <- readLines(faa, warn = FALSE)
@@ -134,6 +144,8 @@ rem_seqs <- readLines(REMOVE_SEQS, warn = FALSE)
 tblout <- tblout %>%
   filter(!orf_name %in% rem_seqs)
 
+log_step(tblout, "02_Manual removal")
+
 
 # Keep best hit and credible additional copies
 score_threshold_multicopy <- 0.8
@@ -148,7 +160,7 @@ tblout_ranked <- tblout %>%
   slice(1) %>%
   ungroup() %>%
   group_by(virus_id, marker_group_id) %>%
-  arrange(desc(domain_score), i_evalue, .by_group = TRUE) %>%
+  arrange(i_evalue, desc(domain_score), .by_group = TRUE) %>%
   mutate(
     copy_rank = row_number(),
     best_score = first(domain_score),
@@ -159,6 +171,7 @@ tblout_ranked <- tblout %>%
   rename(virus_id_tblout = virus_id) %>%
   ungroup()
 
+log_step(tblout_ranked, "03_Best HMM hit per ORF")
 
 # Manage virus id in manifest
 manifest <- manifest %>%
@@ -175,6 +188,103 @@ selected_orfs <- tblout_ranked %>%
   ) %>%
   left_join(manifest, by = "virus_id_cut")
 
+log_step(selected_orfs, "04_ORF selection")
+
+# LOAD ORFS
+load_orfs <- function(virus_id) {
+  faa_path <- file.path(ORF_DIR, str_c(virus_id, ".faa"))
+  fna_path <- file.path(ORF_DIR, str_c(virus_id, ".fna"))
+
+  aa_seq <- if (file.exists(faa_path)) Biostrings::readAAStringSet(faa_path) else Biostrings::AAStringSet()
+  nt_seq <- if (file.exists(fna_path)) Biostrings::readDNAStringSet(fna_path) else Biostrings::DNAStringSet()
+
+  names(aa_seq) <- sub(" .*", "", names(aa_seq))
+  names(nt_seq) <- sub(" .*", "", names(nt_seq))
+
+  list(aa = aa_seq, nt = nt_seq)
+}
+
+ORF_CACHE <- list()
+
+get_orfs <- function(virus_id) {
+  if (is.null(ORF_CACHE[[virus_id]])) ORF_CACHE[[virus_id]] <<- load_orfs(virus_id)
+  ORF_CACHE[[virus_id]]
+}
+
+
+# Remove terminal star
+strip_terminal_star <- function(x) {
+  x_chr <- as.character(x)
+  x_chr2 <- sub("\\*$", "", x_chr)
+  names(x_chr2) <- names(x)
+  Biostrings::AAStringSet(x_chr2)
+}
+
+
+# Extract final marker sequebces and measure lengths
+# The median threshold is applied to the sequences that will be exported.
+aa_sequences <- vector("list", nrow(selected_orfs))
+nt_sequences <- vector("list", nrow(selected_orfs))
+selected_orfs$marker_length_AA <- NA_integer_
+selected_orfs$marker_length_NT <- NA_integer_
+
+for (i in seq_len(nrow(selected_orfs))) {
+  r <- selected_orfs[i, ]
+  orfs <- get_orfs(r$virus_id)
+  aa_seq <- orfs$aa[r$orf_name]
+  nt_seq <- orfs$nt[r$orf_name]
+
+  # RdRp: export only the HMMER domain envelope, not the whole ORF.
+  if (r$marker_group_id == "rdrp_orthornavirae") {
+    aa_start <- max(1L, r$env_from)
+    aa_end <- min(Biostrings::width(aa_seq), r$env_to)
+
+    nt_start <- (aa_start - 1L) * 3L + 1L
+    nt_end <- min(Biostrings::width(nt_seq), aa_end * 3L)
+
+    aa_seq <- Biostrings::subseq(aa_seq, start = aa_start, end = aa_end)
+    nt_seq <- Biostrings::subseq(nt_seq, start = nt_start, end = nt_end)
+  }
+
+  aa_seq <- strip_terminal_star(aa_seq)
+
+  aa_sequences[[i]] <- aa_seq
+  nt_sequences[[i]] <- nt_seq
+  selected_orfs$marker_length_AA[i] <- Biostrings::width(aa_seq)
+  selected_orfs$marker_length_NT[i] <- Biostrings::width(nt_seq)
+}
+
+# Filter markers shorter than 25% of their own median
+selected_orfs <- selected_orfs %>%
+  group_by(marker_group_id) %>%
+  mutate(median_length_AA = median(marker_length_AA), 
+         min_length_AA = 0.25 * median_length_AA) %>%
+  ungroup()
+
+keep <- selected_orfs$marker_length_AA >= selected_orfs$min_length_AA
+
+selected_orfs <- selected_orfs %>%
+  filter(keep) %>%
+  select(-median_length_AA, -min_length_AA)
+
+aa_sequences <- aa_sequences[keep]
+nt_sequences <- nt_sequences[keep]
+
+log_step(selected_orfs, "05_Length filter")
+
+filter_log <- filter_log %>%
+  arrange(marker_group_id, step) %>%
+  group_by(marker_group_id) %>%
+  mutate(n_removed_hits = lag(n_hits, default = first(n_hits)) - n_hits,
+         n_removed_orfs = lag(n_orfs, default = first(n_orfs)) - n_orfs) %>%
+  ungroup()
+
+write_tsv(filter_log, file.path(OUT_LOGS, "filter_summary.tsv"))
+print(filter_log, n = Inf)
+
+
+# Mapping from each filtered table row to its extracted sequence.
+selected_orfs$sequence_index <- seq_len(nrow(selected_orfs))
 
 # EXPORT TABLES
 marker_group_ids <- sort(unique(selected_orfs$marker_group_id))
@@ -215,49 +325,15 @@ virus_metadata <- manifest %>%
 write_tsv(virus_metadata, file.path(OUT_TABLES, "virus_metadata.tsv"))
 
 
-# Calculate logs
+# Calculate logs after filtering
 source("scripts/utils/hmm_search_logs.R")
 
-
-# LOAD ORFS
-load_orfs <- function(virus_id) {
-  faa_path <- file.path(ORF_DIR, str_c(virus_id, ".faa"))
-  fna_path <- file.path(ORF_DIR, str_c(virus_id, ".fna"))
-
-  aa_seq <- if (file.exists(faa_path)) Biostrings::readAAStringSet(faa_path) else Biostrings::AAStringSet()
-  nt_seq <- if (file.exists(fna_path)) Biostrings::readDNAStringSet(fna_path) else Biostrings::DNAStringSet()
-
-  names(aa_seq) <- sub(" .*", "", names(aa_seq))
-  names(nt_seq) <- sub(" .*", "", names(nt_seq))
-
-  list(aa = aa_seq, nt = nt_seq)
-}
-
-ORF_CACHE <- list()
-
-get_orfs <- function(virus_id) {
-  if (is.null(ORF_CACHE[[virus_id]])) ORF_CACHE[[virus_id]] <<- load_orfs(virus_id)
-  ORF_CACHE[[virus_id]]
-}
-
-
-# Remove terminal star
-strip_terminal_star <- function(x) {
-  x_chr <- as.character(x)
-  x_chr2 <- sub("\\*$", "", x_chr)
-  names(x_chr2) <- names(x)
-  Biostrings::AAStringSet(x_chr2)
-}
-
-
-# EXPORT FASTA BY GROUP / MARKER
-targets <- selected_orfs %>%
-  distinct(group_id, marker, marker_group_id) %>%
-  arrange(group_id, marker)
+# EXPORT FINAL FASTA AND PER-MARKER DESCRIPTION TABLES
+targets <- selected_orfs %>% distinct(group_id, marker, marker_group_id) %>% arrange(group_id, marker)
 
 for (i in seq_len(nrow(targets))) {
-  g  <- targets$group_id[i]
-  m  <- targets$marker[i]
+  g <- targets$group_id[i]
+  m <- targets$marker[i]
   mg <- targets$marker_group_id[i]
 
   out_m <- file.path(OUT_MARKERS, g, m)
@@ -267,25 +343,15 @@ for (i in seq_len(nrow(targets))) {
     filter(marker_group_id == mg) %>%
     arrange(virus_id, copy_rank, evalue, desc(score)) %>%
     mutate(description = str_remove(description, "^# ")) %>%
-    separate(
-      description,
-      into = c("position_start", "position_end", "prodigal_strand", "prodigal_info"),
-      sep = " # ",
-      extra = "merge",
-      fill = "right",
-      convert = TRUE
-    )
-
-  df_m2 <- df_m %>%
-    select(
-      orf_name, virus_id, group_id, marker,
-      evalue, score, target_length_aa,
-      position_start, position_end,
-      ali_from, ali_to, env_from, env_to,
-      Species, Virus_names
-    ) %>%
+    separate(description, into = c("position_start", "position_end", "prodigal_strand", "prodigal_info"),
+             sep = " # ", extra = "merge", fill = "right", convert = TRUE) %>%
     rename(ORF_length_aa = target_length_aa)
 
+  df_m2 <- df_m %>%
+    select(orf_name, virus_id, group_id, marker,
+           marker_length_AA, marker_length_NT,
+           position_start, position_end, ORF_length_aa, ali_from, ali_to, env_from, env_to,
+           evalue, score, Species, Virus_names)
   write_tsv(df_m2, file.path(out_m, str_c(mg, "_virus_orf_description.tsv")))
 
   aa_m <- Biostrings::AAStringSet()
@@ -293,50 +359,19 @@ for (i in seq_len(nrow(targets))) {
 
   for (j in seq_len(nrow(df_m))) {
     r <- df_m[j, ]
+    hdr <- str_c(r$orf_name, " ", m, " ",
+                 df_m[j, ] %>% unite("Taxonomy", Kingdom, Phylum, Class, Order, Family, Genus, Species, sep = ";") %>% pull(Taxonomy))
+                 
+    aa_seq <- aa_sequences[[r$sequence_index]]
+    nt_seq <- nt_sequences[[r$sequence_index]]
 
-    orfs <- get_orfs(r$virus_id)
-
-    hdr <- str_c(
-      r$orf_name, " ", m, " ",
-      df_m[j, ] %>%
-        unite("Taxonomy", Kingdom, Phylum, Class, Order, Family, Genus, Species, sep = ";") %>%
-        pull(Taxonomy)
-    )
-
-    aa_seq <- orfs$aa[r$orf_name]
-    nt_seq <- orfs$nt[r$orf_name]
-
-    # For RdRp, extract only the region detected by RdRp-scan
-    if (r$marker_group_id == "rdrp_orthornavirae") {
-      aa_start <- max(1, r$env_from)
-      aa_end <- min(Biostrings::width(aa_seq), r$env_to)
-
-      nt_start <- max(1, ((aa_start - 1) * 3) + 1)
-      nt_end <- min(Biostrings::width(nt_seq), aa_end * 3)
-
-      aa_seq <- Biostrings::subseq(aa_seq, start = aa_start, end = aa_end)
-      nt_seq <- Biostrings::subseq(nt_seq, start = nt_start, end = nt_end)
-    }
+    names(aa_seq) <- hdr
+    names(nt_seq) <- hdr
 
     aa_m <- c(aa_m, aa_seq)
-    aa_m <- strip_terminal_star(aa_m)
-    names(aa_m)[length(aa_m)] <- hdr
-
     nt_m <- c(nt_m, nt_seq)
-    names(nt_m)[length(nt_m)] <- hdr
   }
 
-  Biostrings::writeXStringSet(
-    aa_m,
-    file.path(out_m, str_c(mg, "_protein.fasta")),
-    format = "fasta",
-    width = 60
-  )
-
-  Biostrings::writeXStringSet(
-    nt_m,
-    file.path(out_m, str_c(mg, "_nucleotide.fasta")),
-    format = "fasta",
-    width = 60
-  )
+  Biostrings::writeXStringSet(aa_m, file.path(out_m, str_c(mg, "_protein.fasta")), format = "fasta", width = 60)
+  Biostrings::writeXStringSet(nt_m, file.path(out_m, str_c(mg, "_nucleotide.fasta")), format = "fasta", width = 60)
 }

@@ -32,10 +32,8 @@ tail -n +2 "$MAP_MARKERS" |
     tbl="$OUT_DIR/${marker}.tbl"
     log="$OUT_DIR/${marker}.log"
 
-    # ----------------------------------------------------------
     # Build the protein pool for genomes associated with marker
-    # ----------------------------------------------------------
-
+    
     > "$pool"
 
     awk -F'\t' -v marker="$marker" '
@@ -65,9 +63,7 @@ tail -n +2 "$MAP_MARKERS" |
       done
 
 
-    # ----------------------------------------------------------
     # Search marker
-    # ----------------------------------------------------------
 
     if [[ "$marker" == "rdrp_orthornavirae" ]]; then
 
@@ -82,7 +78,7 @@ tail -n +2 "$MAP_MARKERS" |
       hmmscan \
         --cpu "${SLURM_CPUS_PER_TASK:-1}" \
         --noali \
-        -E 1e-6 \
+        -E 1e-5 \
         --domtblout "$tbl" \
         "$RDRPSCAN_DB" \
         "$pool" \
