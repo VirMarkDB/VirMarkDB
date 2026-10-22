@@ -1,7 +1,7 @@
 library(tidyverse)
 
 # Config
-ictv_xlsx <- "VMR_MSL41.v1.20260320.xlsx"
+ictv_xlsx <- "VMR_MSL41.v1.20260729.xlsx"
 manual_gen_ncbi <- "input/manual_genomes_ncbi.tsv"
 manual_gen_priv <- "input/manual_genomes_private.tsv"
 map_file <- "input/mapfile.tsv"
