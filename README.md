@@ -14,7 +14,7 @@ It is designed for viral marker detection, marker-based phylogeny, and taxonomic
 
 Full documentation is available at:
 
-**[https://est-oup.github.io/VirMarkDB/](https://est-oup.github.io/VirMarkDB/)**
+**[https://virmarkdb.github.io/VirMarkDB/](https://virmarkdb.github.io/VirMarkDB/)**
 
 The website provides information about:
 
