@@ -1,4 +1,4 @@
-virmark_scope	genomes	families	species
-Nucleocytoviricota	224	15	157
-Orthornavirae	7832	137	7035
-Pantevenvirales	360	3	360
+scope	genomes	families	genera	species
+Nucleocytoviricota	252	15	65	160
+Orthornavirae	11793	148	1426	7143
+Pantevenvirales	361	3	102	361
