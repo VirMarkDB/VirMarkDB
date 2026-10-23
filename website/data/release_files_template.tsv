@@ -1,0 +1,9 @@
+resource	path	description	status
+Complete release archive	VirMarkDB_vX.Y.Z.tar.gz	Complete curated release archive	To be added
+Marker files	markers/	Protein and nucleotide FASTA files plus ORF tables	Included in archive
+Virus information	virus_informations/	Genome metadata and marker-composition tables	Included in archive
+VSEARCH export	export_format/vsearch/	VSEARCH-compatible FASTA and taxonomy files	Included in archive
+DADA2 export	export_format/dada2/	DADA2-compatible training FASTA files	Included in archive
+Citation	CITATION.cff	Machine-readable citation metadata	Included in archive
+License	LICENSE	Reuse license	Included in archive
+Changelog	CHANGELOG.md	Release notes and version history	Included in archive

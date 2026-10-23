@@ -1,0 +1,58 @@
+---
+title: "Contribute"
+meta-description: "How to report issues, add genomes or proteins, correct taxonomy"
+---
+
+Contributions to VirMarkDB are welcome through GitHub issues and pull requests, including marker corrections, genome or protein additions, taxonomy updates, and documentation improvements.
+
+## Issue tracker
+
+Open an [issue](https://github.com/Est-oup/VirMarkDB/issues) for:
+
+- suspicious or incorrect marker assignments
+- missing taxa or poorly represented lineages
+- requests for new marker groups
+- questions about workflow provenance or reproducibility
+- documentation corrections
+
+## Pull request workflow
+
+1. Open an issue describing the proposed change.
+2. Fork the repository.
+3. Create a dedicated branch.
+4. Modify the relevant files.
+5. Check metadata consistency (see checklist below).
+6. Open a pull request referencing the issue.
+
+## Adding reference proteins
+
+| Field | Description |
+|---|---|
+| `marker` | Marker name matching an existing identifier |
+| `protein_accession` | Protein accession or stable identifier |
+| `source` | Source database, publication or curation source |
+| `taxonomy` | ICTV-compatible taxonomy when possible |
+| `reason` | Why this sequence should be added |
+
+## Adding reference genomes
+
+| Field | Description |
+|---|---|
+| `genome_accession` | Genome accession or stable identifier |
+| `virus_name` | Virus name |
+| `ICTV_ID` | ICTV identifier when available |
+| `taxonomy` | Taxonomic assignment |
+| `source` | Source database or publication |
+| `reason` | Why this genome should be added |
+
+## Metadata consistency checklist
+
+Before opening a pull request:
+
+- identifiers are stable and not session-specific
+- marker names match existing identifiers in `mapfile.tsv`
+- `group_id` and `marker_group_id` use lowercase identifiers without spaces
+- taxonomy is consistent from Kingdom to Species
+- missing taxonomy ranks are coded as `NA`
+- added files are not cluster-specific
+- `input/ncbi.creds` and other private credentials are never committed
