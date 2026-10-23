@@ -1,0 +1,61 @@
+---
+title: "Download & Releases"
+meta-description: "Download VirMarkDB, checksums, changelog and versioning policy"
+---
+
+## Download
+
+**Complete release archive**  *not yet deposited*
+
+[Download from Zenodo](https://zenodo.org/records/XXXXXXX){.btn-action }
+
+
+All curated marker sequences, metadata tables, citation file, license and changelog are distributed as a single versioned archive: `VirMarkDB_vX.Y.Z.tar.gz`
+
+::: {.callout-warning}
+No public release has been deposited yet. This page will be updated with download links, checksums and a DOI when the first archive is deposited on Zenodo.
+:::
+
+## Current release
+
+**Version:**  *(not yet deposited)*
+
+**Distribution:** the complete release will be distributed as a single versioned archive on Zenodo: `VirMarkDB_vX.Y.Z.tar.gz`
+
+## Archive contents
+
+For a description of every file and folder in the release archive, see [Files & formats](files-formats.qmd).
+
+## Checksums
+
+| File | SHA256 |
+|---|---|
+| `VirMarkDB_vX.Y.Z.tar.gz` | — |
+
+## Changelog
+
+**Previous releases**
+
+| Version | Date | DOI | Notes |
+|---|---|---|---|
+| — | — | — | No previous releases |
+
+### v0.1.0 - 2026-05-06
+
+**Added:**
+
+- Initial release of VirMarkDB.
+
+**Changed:** none
+
+**Fixed:** none
+
+**Removed:** none
+
+## Versioning policy
+
+| Change type | Version increment | Example |
+|---|---|---|
+| New marker group or major restructuring | Major | `v1.0.0` → `v2.0.0` |
+| Added genomes, proteins or improved coverage | Minor | `v1.0.0` → `v1.1.0` |
+| Documentation or small metadata corrections | Patch | `v1.0.0` → `v1.0.1` |

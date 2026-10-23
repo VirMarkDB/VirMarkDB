@@ -1,0 +1,27 @@
+cff-version: 1.0.0
+title: "VirMarkDB"
+message: "If you use VirMarkDB, please cite it using the metadata from this file."
+type: dataset
+authors:
+  - given-names: "Paul"
+    family-names: "Estoup"
+  - given-names: "Nicolas"
+    family-names: "Henry"
+  - given-names: "Erwan"
+    family-names: "Corre"
+  - given-names: "Anne-Claire"
+    family-names: "Baudoux"
+
+repository-code: "https://github.com/Est-oup/VirMarkDB"
+url: "https://est-oup.github.io/VirMarkDB/"
+abstract: "VirMarkDB is a curated reference database providing protein sequences of viral marker genes for Nucleocytoviricota within Bamfordvirae."
+
+keywords:
+  - viruses
+  - Nucleocytoviricota
+  - Bamfordvirae
+  - viral markers
+  
+license: "CC-BY-4.0"
+version: "0.1.0"
+date-released: "2026-XX-XX"

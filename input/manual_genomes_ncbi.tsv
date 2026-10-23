@@ -1,0 +1,4 @@
+virus_id	Kingdom	Phylum	Class	Order	Family	Genus	Species	Source	Virus_names	Virus_names_abrv	Host_source
+NC_075136	Bamfordvirae	Nucleocytoviricota	Megaviricetes	Imitervirales	Allomimiviridae	Oceanusvirus	Oceanusvirus kaneohense	MANUAL_NCBI	Tetraselmis virus 1	TsV1	algae
+PP728251	Bamfordvirae	Nucleocytoviricota	Megaviricetes	Algavirales	Phycodnaviridae	Prasinovirus	Prasinovirus micromonas polaris	MANUAL_NCBI	Micromonas polaris virus	MpoV-46T	algae
+NC_076895	Bamfordvirae	Nucleocytoviricota	Mriyaviricetes	NA	Yaraviridae	Yaravirus	Yaravirus brasiliensis	MANUAL_NCBI	Yaravirus brasiliensis	BHMG	protists
