@@ -39,4 +39,5 @@
         bash scripts/assessment/12_clusterise_missing_prot.bash
     
     # General statistics
+    module load r/4.5.2
     Rscript scripts/assessment/13_summary_satistics.R
