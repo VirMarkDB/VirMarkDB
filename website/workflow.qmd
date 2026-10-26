@@ -78,8 +78,7 @@ For the eight Nucleocytoviricota markers and gp23, HMM profiles are built from m
 
 **4 · HMM search**: Predicted ORF proteomes are searched using `hmmsearch` for the locally built marker profiles and `hmmscan` for RdRp-scan. Searches use a full-sequence E-value threshold of `1e-5` and export domain-level results (`--domtblout`). Genome-to-marker assignments come from `genome_marker_map.tsv`. Script: `05_hmmsearch.bash`
 
-**5 · Hit selection**: For each ORF, the best HMM hit is selected by decreasing full-sequence bit score, then increasing full-sequence E-value; the domain bit score resolves ties between domain rows. ORFs are then ranked by the same full-sequence criteria within each genome × marker group. The top-ranked ORF is provisionally selected, for markers other than RdRp, additional ORFs may be retained if they meet both score and ORF-length ratios below. For RdRp, only the selected domain envelope (`env_from`–`env_to`) of the top ORF is extracted, rather than the entire predicted ORF. Finally, sequences shorter than 25% of the median exported protein length for their marker group are discarded. Script: `06_final_results.R`
-
+**5 · Hit selection**: For each ORF, the best HMM hit is selected based on the highest full-sequence bit score, followed by the lowest E-value. Candidate ORFs are then ranked within each genome and marker group using the same criteria. For RdRp, only the best-ranked ORF is retained, and the envelope (env_from–env_to) of the highest-scoring domain of its selected HMM hit is extracted. For the other markers, the complete ORF is retained, with additional copies included if they satisfy both the score and length ratios specified below. Finally, sequences shorter than 25% of the median extracted protein length for their marker group are excluded. Script: `06_final_results.R`
 | Filter | Threshold |
 |---|---|
 | Score ratio relative to best hit | ≥ 0.80 |
