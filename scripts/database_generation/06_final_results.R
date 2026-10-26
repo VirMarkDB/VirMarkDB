@@ -151,21 +151,20 @@ log_step(tblout, "02_Manual removal")
 score_threshold_multicopy <- 0.8
 length_threshold_multicopy <- 0.8
 
-# First keep the best HMM/domain hit for each ORF.
+# First keep the best HMM hit for each ORF.
 # This is important for RdRp-scan because one ORF may match several HMM profiles.
 # Then rank distinct ORFs within each virus x marker group.
 tblout_ranked <- tblout %>%
   group_by(virus_id, marker_group_id, orf_name) %>%
-  arrange(desc(domain_score), i_evalue, .by_group = TRUE) %>%
-  slice(1) %>%
+  arrange(desc(score), evalue, desc(domain_score), .by_group = TRUE) %>%  slice(1) %>%
   ungroup() %>%
   group_by(virus_id, marker_group_id) %>%
-  arrange(i_evalue, desc(domain_score), .by_group = TRUE) %>%
+  arrange(desc(score), evalue, .by_group = TRUE) %>%
   mutate(
     copy_rank = row_number(),
-    best_score = first(domain_score),
+    best_score = first(score),
     best_orf_length = first(target_length_aa),
-    score_ratio = domain_score / best_score,
+    score_ratio = score / best_score,
     length_ratio = target_length_aa / best_orf_length
   ) %>%
   rename(virus_id_tblout = virus_id) %>%
