@@ -52,6 +52,17 @@ if(any(!virus$virus_id %in% manifest$virus_id)) stop("Virus IDs not found in man
 
 data <- manifest %>% left_join(virus %>% select(virus_id, all_of(markers$orf_col)), by = "virus_id")
 
+database_summary <- data %>%
+  filter(if_any(ends_with("_orf_names"), ~ !is.na(.x) & .x != "")) %>%
+  group_by(scope) %>%
+  summarise(
+    genomes = n_distinct(virus_id),
+    families = n_distinct(Family[!is.na(Family) & Family != ""]),
+    .groups = "drop"
+  )
+
+write_tsv(database_summary, file.path(summary_dir, "database_summary.tsv"))
+
 # Global summary
 scope_summary <- manifest %>% group_by(scope) %>% summarise(
   genomes = n_distinct(virus_id), families = count_taxa(Family), genera = count_taxa(Genus),
