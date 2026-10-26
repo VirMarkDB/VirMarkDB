@@ -1,0 +1,31 @@
+marker	scope	rank	n_taxa
+Packaging ATPase	Nucleocytoviricota	Family	12
+Packaging ATPase	Nucleocytoviricota	Genus	59
+Packaging ATPase	Nucleocytoviricota	Species	143
+DNA polymerase	Nucleocytoviricota	Family	14
+DNA polymerase	Nucleocytoviricota	Genus	63
+DNA polymerase	Nucleocytoviricota	Species	151
+Major capsid protein	Nucleocytoviricota	Family	15
+Major capsid protein	Nucleocytoviricota	Genus	48
+Major capsid protein	Nucleocytoviricota	Species	115
+Primase	Nucleocytoviricota	Family	14
+Primase	Nucleocytoviricota	Genus	61
+Primase	Nucleocytoviricota	Species	147
+RNA polymerase subunit 1	Nucleocytoviricota	Family	13
+RNA polymerase subunit 1	Nucleocytoviricota	Genus	57
+RNA polymerase subunit 1	Nucleocytoviricota	Species	120
+RNA polymerase subunit 2	Nucleocytoviricota	Family	13
+RNA polymerase subunit 2	Nucleocytoviricota	Genus	58
+RNA polymerase subunit 2	Nucleocytoviricota	Species	121
+TFIIS	Nucleocytoviricota	Family	14
+TFIIS	Nucleocytoviricota	Genus	55
+TFIIS	Nucleocytoviricota	Species	136
+VLTF3	Nucleocytoviricota	Family	14
+VLTF3	Nucleocytoviricota	Genus	42
+VLTF3	Nucleocytoviricota	Species	101
+gp23	Pantevenvirales	Family	3
+gp23	Pantevenvirales	Genus	101
+gp23	Pantevenvirales	Species	360
+RdRp	Orthornavirae	Family	136
+RdRp	Orthornavirae	Genus	1391
+RdRp	Orthornavirae	Species	6754

@@ -8,10 +8,10 @@ meta-description: "Citation, license, references, contact and known limitations"
 | Field | Value |
 |---|---|
 | Title | VirMarkDB |
-| Authors | Paul Estoup, Nicolas Henry, Erwan Corre, Anne-Claire Baudoux |
+| Authors | Estoup P, Baudoux A-C, Corre E, Blanc G, Jackson V & Henry N |
 | Version | 0.1.0 |
-| Date released | 2026-XX-XX |
-| DOI | To be added after Zenodo deposition |
+| Date released | 2026-10-26 |
+| DOI | [https://doi.org/10.5281/zenodo.23605715](https://doi.org/10.5281/zenodo.23605715) |
 | Repository | <https://github.com/Est-oup/VirMarkDB> |
 | URL | <https://est-oup.github.io/VirMarkDB/> |
 | License | CC-BY-4.0 |
@@ -19,7 +19,7 @@ meta-description: "Citation, license, references, contact and known limitations"
 ::: {.callout-note}
 **Suggested citation**
 
-TO_COMPLETE TO_COMPLETE. VirMarkDB. Version 1.0.0. https://github.com/Est-oup/VirMarkDB
+Estoup P, Baudoux A-C, Corre E, Blanc G, Jackson V & Henry N. VirMarkDB. Zenodo. [https://doi.org/10.5281/zenodo.23605715](https://doi.org/10.5281/zenodo.23605715). Check the version and publication date in the Zenodo record before citing a specific release.
 :::
 
 ## License
@@ -48,7 +48,7 @@ Use the GitHub issue tracker for questions, corrections, missing taxa, suspiciou
 
 **HMM profile performance.** Profile sensitivity depends on the diversity, quality, and taxonomic coverage of the seed reference protein sets. Under-represented lineages may show lower detection rates.
 
-**Marker-group scope.** HMM profiles are defined per marker group, each linking a marker gene, a taxonomic scope, a reference protein set, and a corresponding HMM profile. Divergent lineages outside current marker-group scope may not be detected reliably.
+**Marker-group scope.** Marker groups link a gene, a taxonomic scope and its associated HMM resource; RdRp uses external RdRp-scan profiles rather than a locally built HMM. Divergent lineages outside current marker-group scope may not be detected reliably.
 
 **Missing value interpretation.** `NA` or zero values in marker presence tables mean *not detected or not retained under the current workflow and thresholds*, not confirmed biological absence.
 

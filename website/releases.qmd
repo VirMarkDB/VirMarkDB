@@ -5,22 +5,22 @@ meta-description: "Download VirMarkDB, checksums, changelog and versioning polic
 
 ## Download
 
-**Complete release archive**  *not yet deposited*
+**Zenodo record**
 
-[Download from Zenodo](https://zenodo.org/records/XXXXXXX){.btn-action }
+[Open Zenodo record](https://doi.org/10.5281/zenodo.23605715){.btn-action }
 
 
-All curated marker sequences, metadata tables, citation file, license and changelog are distributed as a single versioned archive: `VirMarkDB_vX.Y.Z.tar.gz`
+Check the linked Zenodo record for the available files, version and associated metadata. A complete VirMarkDB data archive is expected to contain marker sequences and accompanying metadata.
 
 ::: {.callout-warning}
-No public release has been deposited yet. This page will be updated with download links, checksums and a DOI when the first archive is deposited on Zenodo.
+A Zenodo DOI has been supplied for VirMarkDB. The specific files and release version associated with it have not been independently verified here.
 :::
 
 ## Current release
 
-**Version:**  *(not yet deposited)*
+**Version:** see the linked Zenodo record (repository metadata currently indicate v0.1.0).
 
-**Distribution:** the complete release will be distributed as a single versioned archive on Zenodo: `VirMarkDB_vX.Y.Z.tar.gz`
+**Distribution:** see the files attached to the linked Zenodo record.
 
 ## Archive contents
 
@@ -30,7 +30,7 @@ For a description of every file and folder in the release archive, see [Files & 
 
 | File | SHA256 |
 |---|---|
-| `VirMarkDB_vX.Y.Z.tar.gz` | — |
+| Release files | Check the Zenodo record for checksums; none are verified here |
 
 ## Changelog
 
@@ -40,7 +40,7 @@ For a description of every file and folder in the release archive, see [Files & 
 |---|---|---|---|
 | — | — | — | No previous releases |
 
-### v0.1.0 - 2026-05-06
+### v0.1.0 - 2026-10-26
 
 **Added:**
 

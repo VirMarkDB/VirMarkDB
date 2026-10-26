@@ -3,6 +3,13 @@ title: "Analyses"
 meta-description: "Coverage statistics and figures for the current VirMarkDB release"
 ---
 
+```{r}
+#| echo: false
+#| include: false
+source("stats.R")
+```
+
+
 This page summarizes the taxonomic coverage, marker distribution and reference sequence composition of the current VirMarkDB release.
 
 VirMarkDB currently integrates curated marker-gene references from three viral groups with distinct marker strategies:
@@ -15,7 +22,15 @@ For database construction and workflow details, see [Database](database.qmd) and
 
 # Release summary
 
-The current VirMarkDB release contains dynamically generated statistics from the analysis pipeline.
+The current genome and taxonomic counts are generated from the processing manifest by `scripts/assessment/13_summary_satistics.R` and stored in `data/analysis/summary/`. Marker recovery describes detection and retention under the current pipeline settings, not confirmed biological absence.
+
+| Group | Genomes | Families |
+|---|---:|---:|
+| Nucleocytoviricota | `r database_stat("Nucleocytoviricota", "genomes")` | `r database_stat("Nucleocytoviricota", "families")` |
+| Pantevenvirales | `r database_stat("Pantevenvirales", "genomes")` | `r database_stat("Pantevenvirales", "families")` |
+| Orthornavirae | `r database_stat("Orthornavirae", "genomes")` | `r database_stat("Orthornavirae", "families")` |
+
+*Values are read directly from `scope_summary.tsv` when the website is rendered. Regenerate this file after rebuilding VirMarkDB.*
 
 # Nucleocytoviricota marker coverage
 
@@ -23,33 +38,42 @@ The current VirMarkDB release contains dynamically generated statistics from the
 
 ## Marker distribution across genomes
 
-![](data/analysis/figures/ncldv_marker_coverage.png)
+![](data/analysis/figures/Figure2A_marker_recovery.png)
 
 ## Marker distribution across families
 
-![](data/analysis/figures/ncldv_family_heatmap.png)
+![](data/analysis/figures/FigureS2_ncldv_family_heatmap.png)
 
-## Marker completeness
+## Marker sequence characteristics
 
-![](data/analysis/figures/ncldv_marker_completeness.png)
+![](data/analysis/figures/Figure2B_marker_positive_vs_sequences.png)
 
-## Phylogenetic diversity
+![](data/analysis/figures/Figure2C_protein_length_distribution.png)
 
-Phylogenetic analyses based on concatenated marker-gene alignments were performed to evaluate the coherence of selected reference sequences.
+![](data/analysis/figures/Figure2D_multicopy_genomes.png)
 
-![](data/tree_five_markers.png)
+## Taxonomic representation
+
+![](data/analysis/figures/Figure2E_marker_taxonomic_diversity.png)
+
+## HMM hit scores
+
+![](data/analysis/figures/FigureS1_HMM_scores.png)
+
+The full-sequence bit scores describe retained HMMER matches; they should not be interpreted as a direct comparison of marker quality across HMM profiles.
 
 # Pantevenvirales marker coverage
 
 *Pantevenvirales* representatives are characterized using the g23 major capsid protein marker.
 
-![](data/analysis/figures/pantevenvirales_family_g23.png)
+![](data/analysis/figures/FigureS3_pantevenvirales_gp23.png)
 
 # Orthornavirae marker coverage
 
-RNA viruses are represented through the RNA-dependent RNA polymerase (RdRp) marker.
+RNA viruses are represented through the RNA-dependent RNA polymerase (RdRp) marker, detected using RdRp-scan profiles.
 
-![](data/analysis/figures/orthornavirae_phylum.png)
+![](data/analysis/figures/FigureS4_orthornavirae_rdrp.png)
+
 
 # Notes and limitations
 

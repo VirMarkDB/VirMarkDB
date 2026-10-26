@@ -4,6 +4,13 @@ meta-description: "Reference database of viral marker-gene sequences"
 page-layout: full
 ---
 
+```{r}
+#| echo: false
+#| include: false
+source("stats.R")
+```
+
+
 ::: {.hero-banner}
 
 ![](assets/logo_virmark.png){fig-align="center" width=400px}
@@ -21,18 +28,18 @@ VirMarkDB provides protein/nucleotide sequences for ten conserved marker genes a
 ::: {.snapshot-grid}
 
 ::: {.snapshot-card}
-### 3
+### `r stat("Viral groups")`
 viral groups
 :::
 
 ::: {.snapshot-card}
-### 10
+### `r stat("Marker genes")`
 marker genes
 :::
 
 ::: {.snapshot-card}
-### 8,605
-incorporated genomes
+### `r stat("Genomes")`
+genomes in the processing manifest
 :::
 
 :::

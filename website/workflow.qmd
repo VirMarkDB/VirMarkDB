@@ -3,12 +3,12 @@ title: "Workflow"
 meta-description: "How VirMarkDB is generated, from raw genomes to curated marker profiles"
 ---
 
-VirMarkDB documents how the database is generated, how marker-specific HMM profiles are built and applied, and how the database is refined through assessment-guided detection of missing or underrepresented diversity. The same pipeline is applied uniformly across the three viral groups currently covered — giant viruses, phages, and RNA viruses — each genome being searched only against the marker-group profiles relevant to its taxonomic scope.
+VirMarkDB documents how the database is generated, how marker-specific HMM profiles are built and applied, and how the database is refined through assessment-guided detection of missing or underrepresented diversity. The same overall workflow framework is used for the three viral groups currently covered (giant viruses, phages, and RNA viruses) with marker-specific search strategies. Each genome is searched only against the marker profiles relevant to its taxonomic scope.
 
 ![VirMarkDB workflow overview](assets/virmarkdb_workflow_sub.png)
 
 ::: {.callout-note}
-This pipeline runs identically for all viral groups. The branching point is `mapfile.tsv`: it assigns each marker gene to a taxonomic scope (*Nucleocytoviricota*, *Pantevenvirales*, or *Orthornavirae*), and uses that scope to route each genome to only the HMM profiles relevant to it. The diagram above should be read as running per scope, not globaly.
+The workflow is organized by taxonomic scope using `mapfile.tsv`. The Nucleocytoviricota and Pantevenvirales markers use locally built profiles with `hmmsearch`, whereas RdRp candidates are screened using the external RdRp-scan profiles with `hmmscan`. The diagram above should be interpreted per scope, rather than as a single search against all markers.
 :::
 
 ## Input and provenance
@@ -25,7 +25,7 @@ Manually added genomes (not yet covered by the ICTV VMR) are listed in `input/ma
 <summary>Show <code>input/manual_genomes_ncbi.tsv</code> (excerpt)</summary>
 
 | virus_id | Family | Genus | Species | Source | Virus_names_abrv | Host_source |
-|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|
 | NC_075136 | Allomimiviridae | Oceanusvirus | O. kaneohense | MANUAL_NCBI | TsV1 | algae |
 | PP728251 | Phycodnaviridae | Prasinovirus | P. micromonas polaris | MANUAL_NCBI | MpoV-46T | algae |
 | NC_076895 | Yaraviridae | Yaravirus | Y. brasiliensis | MANUAL_NCBI | BHMG | protists |
@@ -34,23 +34,23 @@ Manually added genomes (not yet covered by the ICTV VMR) are listed in `input/ma
 
 ### Marker-group configuration
 
-`input/mapfile.tsv` is the single source of truth for which marker genes are processed against which taxonomic scopes. Each row defines one **marker group**: a marker gene, a taxonomic scope, a reference protein set, and the HMM profile built from it. The pipeline uses this file at every stage: reference preparation, HMM construction, and HMM search. So each genome is only searched against the profiles relevant to its taxonomic scope.
+`input/mapfile.tsv` is the single source of truth for which marker genes are processed against which taxonomic scopes. Each row defines one **marker group**: a marker gene, a taxonomic scope, a reference protein set, and its associated HMM resource (built locally or obtained from RdRp-scan). The pipeline uses this file at every stage: reference preparation, HMM construction, and HMM search. So each genome is only searched against the profiles relevant to its taxonomic scope.
 
 <details>
 <summary>Show <code>input/mapfile.tsv</code></summary>
 
-| group_id | taxo_rank | taxo_value | marker | marker_group_id |
-|---|---|---|---|---|
-| nucleocytoviricota | Phylum | Nucleocytoviricota | majorcapsid | majorcapsid_nucleocytoviricota |
-| nucleocytoviricota | Phylum | Nucleocytoviricota | dnapol | dnapol_nucleocytoviricota |
-| nucleocytoviricota | Phylum | Nucleocytoviricota | atpase | atpase_nucleocytoviricota |
-| nucleocytoviricota | Phylum | Nucleocytoviricota | primase | primase_nucleocytoviricota |
-| nucleocytoviricota | Phylum | Nucleocytoviricota | rnapol1 | rnapol1_nucleocytoviricota |
-| nucleocytoviricota | Phylum | Nucleocytoviricota | rnapol2 | rnapol2_nucleocytoviricota |
-| nucleocytoviricota | Phylum | Nucleocytoviricota | tf2s | tf2s_nucleocytoviricota |
-| nucleocytoviricota | Phylum | Nucleocytoviricota | vltf3 | vltf3_nucleocytoviricota |
-| pantevenvirales | Order | Pantevenvirales | g23 | g23_Pantevenvirales |
-| orthornavirae | Kingdom | Orthornavirae | rdrp | rdrp_orthornavirae |
+| group_id | taxo_rank | taxo_value | marker | marker_group_id | manual_file |
+|---|---|---|---|---|---|
+| nucleocytoviricota | Phylum | Nucleocytoviricota | majorcapsid | majorcapsid_nucleocytoviricota | majorcapsid_nucleocytoviricota.tsv |
+| nucleocytoviricota | Phylum | Nucleocytoviricota | dnapol | dnapol_nucleocytoviricota | dnapol_nucleocytoviricota.tsv |
+| nucleocytoviricota | Phylum | Nucleocytoviricota | atpase | atpase_nucleocytoviricota | atpase_nucleocytoviricota.tsv |
+| nucleocytoviricota | Phylum | Nucleocytoviricota | primase | primase_nucleocytoviricota | primase_nucleocytoviricota.tsv |
+| nucleocytoviricota | Phylum | Nucleocytoviricota | rnapol1 | rnapol1_nucleocytoviricota | rnapol1_nucleocytoviricota.tsv |
+| nucleocytoviricota | Phylum | Nucleocytoviricota | rnapol2 | rnapol2_nucleocytoviricota | rnapol2_nucleocytoviricota.tsv |
+| nucleocytoviricota | Phylum | Nucleocytoviricota | tf2s | tf2s_nucleocytoviricota | tf2s_nucleocytoviricota.tsv |
+| nucleocytoviricota | Phylum | Nucleocytoviricota | vltf3 | vltf3_nucleocytoviricota | vltf3_nucleocytoviricota.tsv |
+| pantevenvirales | Order | Pantevenvirales | g23 | g23_pantevenvirales | gp23_pantevenvirales.tsv |
+| orthornavirae | Kingdom | Orthornavirae | rdrp | rdrp_orthornavirae | rdrp_orthornavirae.tsv |
 
 </details>
 
@@ -58,7 +58,7 @@ During HMM search, `genome_marker_map.tsv` resolves which genomes fall within ea
 
 ### HMM profile resources
 
-Marker HMM profiles are built from marker-group-specific reference protein sets stored in `output/references_protein/`, sourced from three places:
+For the eight Nucleocytoviricota markers and gp23, HMM profiles are built from marker-specific reference protein sets stored in `output/references_protein/`, sourced from three places. RdRp detection instead uses the external RdRp-scan profile database:
 
 | Source type | Description |
 |---|---|
@@ -72,18 +72,20 @@ Marker HMM profiles are built from marker-group-specific reference protein sets 
 
 **1 · ORF prediction**: ORFs are predicted from each genome with Prodigal in metagenomic mode (`prodigal -p meta`). Script: `02_prodigal.bash`
 
-**2 · Alignment**: Marker-group reference proteins are aligned with MAFFT (`mafft --ep 0 --genafpair`). Script: `03_align_markers.bash`
+**2 · Alignment**: Locally prepared marker reference proteins are aligned with MAFFT (`mafft --ep 0 --genafpair --maxiterate 1000`). Script: `03_align_markers.bash`
 
-**3 · HMM profile construction**: Alignments are converted to HMM profiles with HMMER `hmmbuild`. Script: `04_hmmbuild.bash`
+**3 · HMM profile construction**: Local reference alignments are converted to HMM profiles with HMMER `hmmbuild`. The RdRp profiles are supplied by RdRp-scan instead. Script: `04_hmmbuild.bash`
 
-**4 · HMM search**: Predicted ORF proteomes are searched with `hmmsearch` against the marker-group profiles assigned via `genome_marker_map.tsv`. Script: `05_hmmsearch.bash`
+**4 · HMM search**: Predicted ORF proteomes are searched using `hmmsearch` for the locally built marker profiles and `hmmscan` for RdRp-scan. Searches use a full-sequence E-value threshold of `1e-5` and export domain-level results (`--domtblout`). Genome-to-marker assignments come from `genome_marker_map.tsv`. Script: `05_hmmsearch.bash`
 
-**5 · Hit selection**: For each genome × marker-group pair, hits are ranked by increasing e-value then decreasing bit score. The best-ranked hit is always kept; additional hits are kept only if close to the best in both score and length. Script: `06_final_results.R`
+**5 · Hit selection**: For each ORF, the best HMM hit is selected by decreasing full-sequence bit score, then increasing full-sequence E-value; the domain bit score resolves ties between domain rows. ORFs are then ranked by the same full-sequence criteria within each genome × marker group. The top-ranked ORF is provisionally selected, for markers other than RdRp, additional ORFs may be retained if they meet both score and ORF-length ratios below. For RdRp, only the selected domain envelope (`env_from`–`env_to`) of the top ORF is extracted, rather than the entire predicted ORF. Finally, sequences shorter than 25% of the median exported protein length for their marker group are discarded. Script: `06_final_results.R`
 
 | Filter | Threshold |
 |---|---|
 | Score ratio relative to best hit | ≥ 0.80 |
-| Length ratio relative to best hit | ≥ 0.80 |
+| ORF length ratio relative to best hit | ≥ 0.80 |
+
+*The two copy-retention thresholds apply to markers other than RdRp. The final length filter applies to all markers.*
 
 :::
 

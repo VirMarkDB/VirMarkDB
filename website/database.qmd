@@ -3,19 +3,26 @@ title: "Database"
 meta-description: "Taxonomic scope, marker genes and the marker-group concept"
 ---
 
+```{r}
+#| echo: false
+#| include: false
+source("stats.R")
+```
+
+
 ## Taxonomic scope
 
-VirMarkDB currently covers three viral groups, each targeted through a different marker gene. Taxonomy is derived from the ICTV Virus Metadata Resource [VMR_MSL41.v1.20260320](https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260320.xlsx).
+VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource [VMR_MSL41.v1.20260320](https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260320.xlsx).
 
 [![](assets/ictv_logo.png)](https://ictv.global/)
 
 | Group | Kingdom | Phylum (scope) | Genomes | Families | Marker gene(s) |
 |---|---|---|---|---|---|
-| Giant viruses | Bamfordvirae | Nucleocytoviricota | 224 | 15 | `atpase`, `dnapol`, `majorcapsid`, `primase`, `rnapol1`, `rnapol2`, `tf2s`, `vltf3` |
-| Phages | Heunggongvirae | Pantevenvirales | 431 | 9 | `g23` |
-| RNA viruses | Orthornavirae | Lenarviricota, Pisuviricota, Kitrinoviricota, Negarnaviricota, Duplornaviricota | 7,950 | 137 | `rdrp` |
+| Giant viruses | Bamfordvirae | Nucleocytoviricota | `r database_stat("Nucleocytoviricota", "genomes")` | `r database_stat("Nucleocytoviricota", "families")` | `atpase`, `dnapol`, `majorcapsid`, `primase`, `rnapol1`, `rnapol2`, `tf2s`, `vltf3` |
+| Phages | Heunggongvirae | Pantevenvirales | `r database_stat("Pantevenvirales", "genomes")` | `r database_stat("Pantevenvirales", "families")` | `g23` |
+| RNA viruses | Orthornavirae | Multiple phyla | `r database_stat("Orthornavirae", "genomes")` | `r database_stat("Orthornavirae", "families")` | `rdrp` |
 
-Taxonomy from Kingdom to Species is derived from the ICTV VMR. Manually added genomes follow the same taxonomy fields. See [Workflow → Additional genome inputs](workflow.qmd#additional-genome-inputs) for how these are incorporated.
+The counts above describe genomes in the current processing manifest and are taken from `scope_summary.tsv` (not only genomes with a retained marker). Taxonomy from Kingdom to Species is derived from the ICTV VMR. Manually added genomes follow the same taxonomy fields. See [Workflow → Additional genome inputs](workflow.qmd#additional-genome-inputs) for how these are incorporated.
 
 ## Marker genes
 
@@ -48,7 +55,7 @@ Ten conserved marker genes are targeted across the three groups.
 
 ## Why marker groups exist
 
-Some marker genes are too divergent across viral lineages to be represented by a single HMM profile. VirMarkDB solves this with **marker groups**: each one ties together a marker gene, a taxonomic scope, a reference protein set, and a dedicated HMM profile built from that set. This keeps a common marker-gene framework across the database while letting each lineage be represented by a profile calibrated on its own reference sequences.
+Some marker genes are too divergent across viral lineages to be represented by a single HMM profile. VirMarkDB solves this with **marker groups**: each one ties together a marker gene, a taxonomic scope, a reference protein set, and an associated HMM resource. The Nucleocytoviricota and gp23 profiles are constructed locally, whereas RdRp detection uses the external RdRp-scan profile database. This keeps a common marker-gene framework across the database while letting each lineage be represented by a profile calibrated on its own reference sequences.
 
 ::: {.callout-note}
 This page describes the *concept*. The mechanics (how `mapfile.tsv` encodes marker groups and drives the pipeline) are covered once, in [Workflow → Marker-group configuration](workflow.qmd#marker-group-configuration).
