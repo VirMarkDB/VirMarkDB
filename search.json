@@ -123,14 +123,14 @@
     "href": "analysis.html#hmm-hit-scores",
     "title": "Analyses",
     "section": "HMM hit scores",
-    "text": "HMM hit scores\n\n\n\n\n\n\nImportant\n\n\n\nFigure S1 is temporarily withheld pending regeneration: the exported HMM-score table must retain the correct marker identifier for each hit. Run the corrected scripts/assessment/13_summary_satistics.R and verify marker_hmm_scores.tsv before restoring the figure.\n\n\nThe full-sequence bit scores describe retained HMMER matches; they should not be interpreted as a direct comparison of marker quality across HMM profiles."
+    "text": "HMM hit scores\n\nThe full-sequence bit scores describe retained HMMER matches; they should not be interpreted as a direct comparison of marker quality across HMM profiles."
   },
   {
     "objectID": "analysis.html#nucleocytoviricota",
     "href": "analysis.html#nucleocytoviricota",
     "title": "Analyses",
     "section": "Nucleocytoviricota",
-    "text": "Nucleocytoviricota\nNucleocytoviricota genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance. Family-level recovery is defined as the number of genomes with a retained marker divided by the number of genomes assessed in that family.\n\n\n\n\n\n\nImportant\n\n\n\nFigure S2 is temporarily withheld pending regeneration: the family-level recovery percentages in the previous export were incorrect. Run the corrected scripts/assessment/13_summary_satistics.R and confirm every recovery value lies between 0 and 100% before restoring the heatmap."
+    "text": "Nucleocytoviricota\nNucleocytoviricota genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance. Family-level recovery is defined as the number of genomes with a retained marker divided by the number of genomes assessed in that family."
   },
   {
     "objectID": "analysis.html#pantevenvirales",
@@ -186,14 +186,14 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Field\nValue\n\n\n\n\nTitle\nVirMarkDB\n\n\nAuthors\nEstoup P, Baudoux A-C, Corre E, Blanc G & Henry N\n\n\nVersion\n0.1.0\n\n\nDate released\n2026-10-26\n\n\nDOI\nhttps://doi.org/10.5281/zenodo.23605715\n\n\nRepository\nhttps://github.com/virmarkdb/VirMarkDB\n\n\nURL\nhttps://virmarkdb.github.io/VirMarkDB/\n\n\nLicense\nCC-BY-4.0\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nSuggested citation\nEstoup P, Baudoux A-C, Corre E, Blanc G & Henry N. VirMarkDB. Zenodo. https://doi.org/10.5281/zenodo.23605715. Check the author list, version and publication date in the Zenodo record before citing a specific release."
+    "text": "Field\nValue\n\n\n\n\nTitle\nVirMarkDB: a reference database of viral marker-gene sequences\n\n\nAuthors\nEstoup P, Baudoux A-C, Corre E, Blanc G, Henry N\n\n\nVersion\n0.1.0\n\n\nDate released\n2026-10-26\n\n\nDOI\nhttps://doi.org/10.5281/zenodo.23605715\n\n\nRepository\nhttps://github.com/VirMarkDB/VirMarkDB\n\n\nURL\nhttps://VirMarkDB.github.io/VirMarkDB/\n\n\nLicense\nCC-BY-4.0\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nSuggested citation\nVirMarkDB: a reference database of viral marker-gene sequences. Estoup P, Baudoux A-C, Corre E, Blanc G, Henry N. Zenodo. https://doi.org/10.5281/zenodo.23605715. Check the author list, version and publication date in the Zenodo record before citing a specific release."
   },
   {
     "objectID": "about.html#citation",
     "href": "about.html#citation",
     "title": "About",
     "section": "",
-    "text": "Field\nValue\n\n\n\n\nTitle\nVirMarkDB\n\n\nAuthors\nEstoup P, Baudoux A-C, Corre E, Blanc G & Henry N\n\n\nVersion\n0.1.0\n\n\nDate released\n2026-10-26\n\n\nDOI\nhttps://doi.org/10.5281/zenodo.23605715\n\n\nRepository\nhttps://github.com/virmarkdb/VirMarkDB\n\n\nURL\nhttps://virmarkdb.github.io/VirMarkDB/\n\n\nLicense\nCC-BY-4.0\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nSuggested citation\nEstoup P, Baudoux A-C, Corre E, Blanc G & Henry N. VirMarkDB. Zenodo. https://doi.org/10.5281/zenodo.23605715. Check the author list, version and publication date in the Zenodo record before citing a specific release."
+    "text": "Field\nValue\n\n\n\n\nTitle\nVirMarkDB: a reference database of viral marker-gene sequences\n\n\nAuthors\nEstoup P, Baudoux A-C, Corre E, Blanc G, Henry N\n\n\nVersion\n0.1.0\n\n\nDate released\n2026-10-26\n\n\nDOI\nhttps://doi.org/10.5281/zenodo.23605715\n\n\nRepository\nhttps://github.com/VirMarkDB/VirMarkDB\n\n\nURL\nhttps://VirMarkDB.github.io/VirMarkDB/\n\n\nLicense\nCC-BY-4.0\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nSuggested citation\nVirMarkDB: a reference database of viral marker-gene sequences. Estoup P, Baudoux A-C, Corre E, Blanc G, Henry N. Zenodo. https://doi.org/10.5281/zenodo.23605715. Check the author list, version and publication date in the Zenodo record before citing a specific release."
   },
   {
     "objectID": "about.html#license",
