@@ -11,7 +11,7 @@ meta-description: "Citation, license, references, contact and known limitations"
 | Authors | Estoup P, Baudoux A-C, Corre E, Blanc G, Henry N |
 | Version | 0.1.0 |
 | Date released | 2026-10-26 |
-| DOI | [https://doi.org/10.5281/zenodo.23605715](https://doi.org/10.5281/zenodo.23605715) |
+| DOI | [https://doi.org/10.5281/zenodo.23712240](https://doi.org/10.5281/zenodo.23712240) |
 | Repository | <https://github.com/VirMarkDB/VirMarkDB> |
 | URL | <https://VirMarkDB.github.io/VirMarkDB/> |
 | License | CC-BY-4.0 |
@@ -19,7 +19,7 @@ meta-description: "Citation, license, references, contact and known limitations"
 ::: {.callout-note}
 **Suggested citation**
 
-VirMarkDB: a reference database of viral marker-gene sequences. Estoup P, Baudoux A-C, Corre E, Blanc G, Henry N. Zenodo. [https://doi.org/10.5281/zenodo.23605715](https://doi.org/10.5281/zenodo.23605715). Check the author list, version and publication date in the Zenodo record before citing a specific release.
+VirMarkDB: a reference database of viral marker-gene sequences. Estoup P, Baudoux A-C, Corre E, Blanc G, Henry N. Zenodo. [https://doi.org/10.5281/zenodo.23712240](https://doi.org/10.5281/zenodo.23712240). Check the author list, version and publication date in the Zenodo record before citing a specific release.
 :::
 
 ## License

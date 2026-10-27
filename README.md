@@ -33,13 +33,13 @@ Public release archives will be deposited on Zenodo.
 | Item | Status |
 |---|---|
 | Release archive | v0.1.0 |
-| Zenodo DOI | https://doi.org/10.5281/zenodo.23605715 |
+| Zenodo DOI | https://doi.org/10.5281/zenodo.23712240 |
 
 ## Citation
 
 Citation metadata are provided in [`CITATION.cff`](CITATION.cff).
 
-Estoup P, Baudoux A-C, Corre E, Blanc G & Henry N. 2026. *VirMarkDB: a reference database of viral marker-gene sequences*. Version 0.1.0. Zenodo. https://doi.org/10.5281/zenodo.23605715 
+Estoup P, Baudoux A-C, Corre E, Blanc G & Henry N. 2026. *VirMarkDB: a reference database of viral marker-gene sequences*. Version 0.1.0. Zenodo. https://doi.org/10.5281/zenodo.23712240 
 
 ## License
 

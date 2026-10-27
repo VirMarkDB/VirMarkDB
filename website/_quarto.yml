@@ -38,7 +38,7 @@ website:
         href: https://github.com/virmarkdb/VirMarkDB/issues
         text: "Issues"
       - text: "Zenodo"
-        href: https://doi.org/10.5281/zenodo.23605715
+        href: https://doi.org/10.5281/zenodo.23712240
 
   page-footer:
     left: "VirMarkDB - viral marker database - v0.1.0"
@@ -48,7 +48,7 @@ website:
       - icon: exclamation-circle
         href: https://github.com/VirMarkDB/VirMarkDB/issues
       - text: "Zenodo"
-        href: https://doi.org/10.5281/zenodo.23605715
+        href: https://doi.org/10.5281/zenodo.23712240
 
   back-to-top-navigation: true
 

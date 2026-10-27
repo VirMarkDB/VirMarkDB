@@ -7,7 +7,7 @@ meta-description: "Download VirMarkDB, checksums, changelog and versioning polic
 
 **Zenodo record**
 
-[Open Zenodo record](https://doi.org/10.5281/zenodo.23605715){.btn-action }
+[Open Zenodo record](https://doi.org/10.5281/zenodo.23712240){.btn-action }
 
 ::: {.callout-warning}
 Check the linked Zenodo record for the available files, version and associated metadata. A complete VirMarkDB data archive is expected to contain marker sequences and accompanying metadata.
