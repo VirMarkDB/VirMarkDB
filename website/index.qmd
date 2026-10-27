@@ -82,4 +82,4 @@ Report issues, add genomes or proteins, correct taxonomy.
 
 ---
 
-*VirMarkDB — viral marker database*
+*VirMarkDB - viral marker database - v0.1.0*

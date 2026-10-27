@@ -30,7 +30,7 @@ For a description of every file and folder in the release archive, see [Files & 
 
 | File | SHA256 |
 |---|---|
-| Release files | Check the Zenodo record for checksums; none are verified here |
+| v0.1.0 | Check the Zenodo record for checksums; none are verified here |
 
 ## Changelog
 
@@ -40,7 +40,7 @@ For a description of every file and folder in the release archive, see [Files & 
 |---|---|---|---|
 | — | — | — | No previous releases |
 
-### v0.1.0 - 2026-10-26
+### v0.1.0 - 2026-10-28
 
 **Added:**
 
@@ -51,11 +51,3 @@ For a description of every file and folder in the release archive, see [Files & 
 **Fixed:** none
 
 **Removed:** none
-
-## Versioning policy
-
-| Change type | Version increment | Example |
-|---|---|---|
-| New marker group or major restructuring | Major | `v1.0.0` → `v2.0.0` |
-| Added genomes, proteins or improved coverage | Minor | `v1.0.0` → `v1.1.0` |
-| Documentation or small metadata corrections | Patch | `v1.0.0` → `v1.0.1` |

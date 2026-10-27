@@ -8,7 +8,7 @@ This page is the single reference for the structure and contents of a VirMarkDB 
 ## Archive structure
 
 ```
-VirMarkDB_vX.Y.Z/
+VirMarkDB_v0.1.0/
 ├── markers/
 ├── virus_informations/
 ├── README.md
