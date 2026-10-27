@@ -127,17 +127,17 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB/issues"> <i class="bi bi-exclamation-circle" role="img">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB/issues"> <i class="bi bi-exclamation-circle" role="img">
 </i> 
 <span class="menu-text">Issues</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://zenodo.org/"> 
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.23605715"> 
 <span class="menu-text">Zenodo</span></a>
   </li>  
 </ul>
@@ -167,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#virmarkdb-assessment" id="toc-virmarkdb-assessment" class="nav-link" data-scroll-target="#virmarkdb-assessment">VirMarkDB assessment</a></li>
   <li><a href="#software-versions" id="toc-software-versions" class="nav-link" data-scroll-target="#software-versions">Software versions</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Est-oup/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/Est-oup/VirMarkDB/blob/main/workflow.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/virmarkdb/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/virmarkdb/VirMarkDB/blob/main/workflow.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -191,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>VirMarkDB documents how the database is generated, how marker-specific HMM profiles are built and applied, and how the database is refined through assessment-guided detection of missing or underrepresented diversity. The same pipeline is applied uniformly across the three viral groups currently covered — giant viruses, phages, and RNA viruses — each genome being searched only against the marker-group profiles relevant to its taxonomic scope.</p>
+<p>VirMarkDB documents how the database is generated, how marker-specific HMM profiles are built and applied, and how the database is refined through assessment-guided detection of missing or underrepresented diversity. The same overall workflow framework is used for the three viral groups currently covered (giant viruses, phages, and RNA viruses) with marker-specific search strategies. Each genome is searched only against the marker profiles relevant to its taxonomic scope.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="assets/virmarkdb_workflow_sub.png" class="img-fluid figure-img"></p>
@@ -208,7 +208,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This pipeline runs identically for all viral groups. The branching point is <code>mapfile.tsv</code>: it assigns each marker gene to a taxonomic scope (<em>Nucleocytoviricota</em>, <em>Pantevenvirales</em>, or <em>Orthornavirae</em>), and uses that scope to route each genome to only the HMM profiles relevant to it. The diagram above should be read as running per scope, not globaly.</p>
+<p>The workflow is organized by taxonomic scope using <code>mapfile.tsv</code>. The Nucleocytoviricota and Pantevenvirales markers use locally built profiles with <code>hmmsearch</code>, whereas RdRp candidates are screened using the external RdRp-scan profiles with <code>hmmscan</code>. The diagram above should be interpreted per scope, rather than as a single search against all markers.</p>
 </div>
 </div>
 <section id="input-and-provenance" class="level2">
@@ -226,13 +226,14 @@ Show <code>input/manual_genomes_ncbi.tsv</code> (excerpt)
 </summary>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -243,6 +244,7 @@ Show <code>input/manual_genomes_ncbi.tsv</code> (excerpt)
 <th>Source</th>
 <th>Virus_names_abrv</th>
 <th>Host_source</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
@@ -254,6 +256,7 @@ Show <code>input/manual_genomes_ncbi.tsv</code> (excerpt)
 <td>MANUAL_NCBI</td>
 <td>TsV1</td>
 <td>algae</td>
+<td></td>
 </tr>
 <tr class="even">
 <td>PP728251</td>
@@ -263,6 +266,7 @@ Show <code>input/manual_genomes_ncbi.tsv</code> (excerpt)
 <td>MANUAL_NCBI</td>
 <td>MpoV-46T</td>
 <td>algae</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>NC_076895</td>
@@ -272,6 +276,7 @@ Show <code>input/manual_genomes_ncbi.tsv</code> (excerpt)
 <td>MANUAL_NCBI</td>
 <td>BHMG</td>
 <td>protists</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -279,18 +284,19 @@ Show <code>input/manual_genomes_ncbi.tsv</code> (excerpt)
 </section>
 <section id="marker-group-configuration" class="level3">
 <h3 class="anchored" data-anchor-id="marker-group-configuration">Marker-group configuration</h3>
-<p><code>input/mapfile.tsv</code> is the single source of truth for which marker genes are processed against which taxonomic scopes. Each row defines one <strong>marker group</strong>: a marker gene, a taxonomic scope, a reference protein set, and the HMM profile built from it. The pipeline uses this file at every stage: reference preparation, HMM construction, and HMM search. So each genome is only searched against the profiles relevant to its taxonomic scope.</p>
+<p><code>input/mapfile.tsv</code> is the single source of truth for which marker genes are processed against which taxonomic scopes. Each row defines one <strong>marker group</strong>: a marker gene, a taxonomic scope, a reference protein set, and its associated HMM resource (built locally or obtained from RdRp-scan). The pipeline uses this file at every stage: reference preparation, HMM construction, and HMM search. So each genome is only searched against the profiles relevant to its taxonomic scope.</p>
 <details>
 <summary>
 Show <code>input/mapfile.tsv</code>
 </summary>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -299,6 +305,7 @@ Show <code>input/mapfile.tsv</code>
 <th>taxo_value</th>
 <th>marker</th>
 <th>marker_group_id</th>
+<th>manual_file</th>
 </tr>
 </thead>
 <tbody>
@@ -308,6 +315,7 @@ Show <code>input/mapfile.tsv</code>
 <td>Nucleocytoviricota</td>
 <td>majorcapsid</td>
 <td>majorcapsid_nucleocytoviricota</td>
+<td>majorcapsid_nucleocytoviricota.tsv</td>
 </tr>
 <tr class="even">
 <td>nucleocytoviricota</td>
@@ -315,6 +323,7 @@ Show <code>input/mapfile.tsv</code>
 <td>Nucleocytoviricota</td>
 <td>dnapol</td>
 <td>dnapol_nucleocytoviricota</td>
+<td>dnapol_nucleocytoviricota.tsv</td>
 </tr>
 <tr class="odd">
 <td>nucleocytoviricota</td>
@@ -322,6 +331,7 @@ Show <code>input/mapfile.tsv</code>
 <td>Nucleocytoviricota</td>
 <td>atpase</td>
 <td>atpase_nucleocytoviricota</td>
+<td>atpase_nucleocytoviricota.tsv</td>
 </tr>
 <tr class="even">
 <td>nucleocytoviricota</td>
@@ -329,6 +339,7 @@ Show <code>input/mapfile.tsv</code>
 <td>Nucleocytoviricota</td>
 <td>primase</td>
 <td>primase_nucleocytoviricota</td>
+<td>primase_nucleocytoviricota.tsv</td>
 </tr>
 <tr class="odd">
 <td>nucleocytoviricota</td>
@@ -336,6 +347,7 @@ Show <code>input/mapfile.tsv</code>
 <td>Nucleocytoviricota</td>
 <td>rnapol1</td>
 <td>rnapol1_nucleocytoviricota</td>
+<td>rnapol1_nucleocytoviricota.tsv</td>
 </tr>
 <tr class="even">
 <td>nucleocytoviricota</td>
@@ -343,6 +355,7 @@ Show <code>input/mapfile.tsv</code>
 <td>Nucleocytoviricota</td>
 <td>rnapol2</td>
 <td>rnapol2_nucleocytoviricota</td>
+<td>rnapol2_nucleocytoviricota.tsv</td>
 </tr>
 <tr class="odd">
 <td>nucleocytoviricota</td>
@@ -350,6 +363,7 @@ Show <code>input/mapfile.tsv</code>
 <td>Nucleocytoviricota</td>
 <td>tf2s</td>
 <td>tf2s_nucleocytoviricota</td>
+<td>tf2s_nucleocytoviricota.tsv</td>
 </tr>
 <tr class="even">
 <td>nucleocytoviricota</td>
@@ -357,13 +371,15 @@ Show <code>input/mapfile.tsv</code>
 <td>Nucleocytoviricota</td>
 <td>vltf3</td>
 <td>vltf3_nucleocytoviricota</td>
+<td>vltf3_nucleocytoviricota.tsv</td>
 </tr>
 <tr class="odd">
 <td>pantevenvirales</td>
 <td>Order</td>
 <td>Pantevenvirales</td>
 <td>g23</td>
-<td>g23_Pantevenvirales</td>
+<td>g23_pantevenvirales</td>
+<td>gp23_pantevenvirales.tsv</td>
 </tr>
 <tr class="even">
 <td>orthornavirae</td>
@@ -371,6 +387,7 @@ Show <code>input/mapfile.tsv</code>
 <td>Orthornavirae</td>
 <td>rdrp</td>
 <td>rdrp_orthornavirae</td>
+<td>rdrp_orthornavirae.tsv</td>
 </tr>
 </tbody>
 </table>
@@ -379,7 +396,7 @@ Show <code>input/mapfile.tsv</code>
 </section>
 <section id="hmm-profile-resources" class="level3">
 <h3 class="anchored" data-anchor-id="hmm-profile-resources">HMM profile resources</h3>
-<p>Marker HMM profiles are built from marker-group-specific reference protein sets stored in <code>output/references_protein/</code>, sourced from three places:</p>
+<p>For the eight Nucleocytoviricota markers and gp23, HMM profiles are built from marker-specific reference protein sets stored in <code>output/references_protein/</code>, sourced from three places. RdRp detection instead uses the external RdRp-scan profile database:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -412,28 +429,11 @@ Show <code>input/mapfile.tsv</code>
 <h2 class="anchored" data-anchor-id="pipeline">Pipeline</h2>
 <div class="pipeline-steps">
 <p><strong>1 · ORF prediction</strong>: ORFs are predicted from each genome with Prodigal in metagenomic mode (<code>prodigal -p meta</code>). Script: <code>02_prodigal.bash</code></p>
-<p><strong>2 · Alignment</strong>: Marker-group reference proteins are aligned with MAFFT (<code>mafft --ep 0 --genafpair</code>). Script: <code>03_align_markers.bash</code></p>
-<p><strong>3 · HMM profile construction</strong>: Alignments are converted to HMM profiles with HMMER <code>hmmbuild</code>. Script: <code>04_hmmbuild.bash</code></p>
-<p><strong>4 · HMM search</strong>: Predicted ORF proteomes are searched with <code>hmmsearch</code> against the marker-group profiles assigned via <code>genome_marker_map.tsv</code>. Script: <code>05_hmmsearch.bash</code></p>
-<p><strong>5 · Hit selection</strong>: For each genome × marker-group pair, hits are ranked by increasing e-value then decreasing bit score. The best-ranked hit is always kept; additional hits are kept only if close to the best in both score and length. Script: <code>06_final_results.R</code></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Filter</th>
-<th>Threshold</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Score ratio relative to best hit</td>
-<td>≥ 0.80</td>
-</tr>
-<tr class="even">
-<td>Length ratio relative to best hit</td>
-<td>≥ 0.80</td>
-</tr>
-</tbody>
-</table>
+<p><strong>2 · Alignment</strong>: Locally prepared marker reference proteins are aligned with MAFFT (<code>mafft --ep 0 --genafpair --maxiterate 1000</code>). Script: <code>03_align_markers.bash</code></p>
+<p><strong>3 · HMM profile construction</strong>: Local reference alignments are converted to HMM profiles with HMMER <code>hmmbuild</code>. The RdRp profiles are supplied by RdRp-scan instead. Script: <code>04_hmmbuild.bash</code></p>
+<p><strong>4 · HMM search</strong>: Predicted ORF proteomes are searched using <code>hmmsearch</code> for the locally built marker profiles and <code>hmmscan</code> for RdRp-scan. Searches use a full-sequence E-value threshold of <code>1e-5</code> and export domain-level results (<code>--domtblout</code>). Genome-to-marker assignments come from <code>genome_marker_map.tsv</code>. Script: <code>05_hmmsearch.bash</code></p>
+<p><strong>5 · Hit selection</strong>: For each ORF, the best HMM hit is selected based on the highest full-sequence bit score, followed by the lowest E-value. Candidate ORFs are then ranked within each genome and marker group using the same criteria. For RdRp, only the best-ranked ORF is retained, and the envelope (env_from–env_to) of the highest-scoring domain of its selected HMM hit is extracted. For the other markers, the complete ORF is retained, with additional copies included if they satisfy both the score and length ratios specified below. Finally, sequences shorter than 25% of the median extracted protein length for their marker group are excluded. Script: <code>06_final_results.R</code> | Filter | Threshold | |—|—| | Score ratio relative to best hit | ≥ 0.80 | | ORF length ratio relative to best hit | ≥ 0.80 |</p>
+<p><em>The two copy-retention thresholds apply to markers other than RdRp. The final length filter applies to all markers.</em></p>
 </div>
 </section>
 <section id="virmarkdb-assessment" class="level2">
@@ -627,7 +627,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/est-oup\.github\.io\/VirMarkDB\/");
+      var filterRegex = new RegExp("https:\/\/virmarkdb\.github\.io\/VirMarkDB\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -962,23 +962,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Est-oup/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/Est-oup/VirMarkDB/blob/main/workflow.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/virmarkdb/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/virmarkdb/VirMarkDB/blob/main/workflow.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB/issues">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB/issues">
       <i class="bi bi-exclamation-circle" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://zenodo.org/">
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.23605715">
 <p>Zenodo</p>
 </a>
   </li>  

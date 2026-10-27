@@ -127,17 +127,17 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB/issues"> <i class="bi bi-exclamation-circle" role="img">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB/issues"> <i class="bi bi-exclamation-circle" role="img">
 </i> 
 <span class="menu-text">Issues</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://zenodo.org/"> 
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.23605715"> 
 <span class="menu-text">Zenodo</span></a>
   </li>  
 </ul>
@@ -157,18 +157,24 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#release-summary" id="toc-release-summary" class="nav-link active" data-scroll-target="#release-summary">Release summary</a></li>
-  <li><a href="#nucleocytoviricota-marker-coverage" id="toc-nucleocytoviricota-marker-coverage" class="nav-link" data-scroll-target="#nucleocytoviricota-marker-coverage">Nucleocytoviricota marker coverage</a>
+  <li><a href="#marker-distribution-and-sequence-characteristics" id="toc-marker-distribution-and-sequence-characteristics" class="nav-link" data-scroll-target="#marker-distribution-and-sequence-characteristics">Marker distribution and sequence characteristics</a>
   <ul class="collapse">
-  <li><a href="#marker-distribution-across-genomes" id="toc-marker-distribution-across-genomes" class="nav-link" data-scroll-target="#marker-distribution-across-genomes">Marker distribution across genomes</a></li>
-  <li><a href="#marker-distribution-across-families" id="toc-marker-distribution-across-families" class="nav-link" data-scroll-target="#marker-distribution-across-families">Marker distribution across families</a></li>
-  <li><a href="#marker-completeness" id="toc-marker-completeness" class="nav-link" data-scroll-target="#marker-completeness">Marker completeness</a></li>
-  <li><a href="#phylogenetic-diversity" id="toc-phylogenetic-diversity" class="nav-link" data-scroll-target="#phylogenetic-diversity">Phylogenetic diversity</a></li>
+  <li><a href="#marker-recovery-across-genomes" id="toc-marker-recovery-across-genomes" class="nav-link" data-scroll-target="#marker-recovery-across-genomes">Marker recovery across genomes</a></li>
+  <li><a href="#marker-positive-genomes-and-retained-sequences" id="toc-marker-positive-genomes-and-retained-sequences" class="nav-link" data-scroll-target="#marker-positive-genomes-and-retained-sequences">Marker-positive genomes and retained sequences</a></li>
+  <li><a href="#protein-length-distributions" id="toc-protein-length-distributions" class="nav-link" data-scroll-target="#protein-length-distributions">Protein length distributions</a></li>
+  <li><a href="#multiple-marker-copies" id="toc-multiple-marker-copies" class="nav-link" data-scroll-target="#multiple-marker-copies">Multiple marker copies</a></li>
+  <li><a href="#taxonomic-representation" id="toc-taxonomic-representation" class="nav-link" data-scroll-target="#taxonomic-representation">Taxonomic representation</a></li>
+  <li><a href="#hmm-hit-scores" id="toc-hmm-hit-scores" class="nav-link" data-scroll-target="#hmm-hit-scores">HMM hit scores</a></li>
   </ul></li>
-  <li><a href="#pantevenvirales-marker-coverage" id="toc-pantevenvirales-marker-coverage" class="nav-link" data-scroll-target="#pantevenvirales-marker-coverage">Pantevenvirales marker coverage</a></li>
-  <li><a href="#orthornavirae-marker-coverage" id="toc-orthornavirae-marker-coverage" class="nav-link" data-scroll-target="#orthornavirae-marker-coverage">Orthornavirae marker coverage</a></li>
+  <li><a href="#taxonomic-marker-coverage" id="toc-taxonomic-marker-coverage" class="nav-link" data-scroll-target="#taxonomic-marker-coverage">Taxonomic marker coverage</a>
+  <ul class="collapse">
+  <li><a href="#nucleocytoviricota" id="toc-nucleocytoviricota" class="nav-link" data-scroll-target="#nucleocytoviricota">Nucleocytoviricota</a></li>
+  <li><a href="#pantevenvirales" id="toc-pantevenvirales" class="nav-link" data-scroll-target="#pantevenvirales">Pantevenvirales</a></li>
+  <li><a href="#orthornavirae" id="toc-orthornavirae" class="nav-link" data-scroll-target="#orthornavirae">Orthornavirae</a></li>
+  </ul></li>
   <li><a href="#notes-and-limitations" id="toc-notes-and-limitations" class="nav-link" data-scroll-target="#notes-and-limitations">Notes and limitations</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Est-oup/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/Est-oup/VirMarkDB/blob/main/analysis.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/virmarkdb/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/virmarkdb/VirMarkDB/blob/main/analysis.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -202,38 +208,80 @@ ul.task-list li input[type="checkbox"] {
 <p>For database construction and workflow details, see <a href="./database.html">Database</a> and <a href="./workflow.html">Workflow</a>.</p>
 <section id="release-summary" class="level1">
 <h1>Release summary</h1>
-<p>The current VirMarkDB release contains dynamically generated statistics from the analysis pipeline.</p>
+<p>The genome and taxonomic counts represent the current VirMarkDB database, including only genomes with at least one retained marker sequence. These statistics are generated by <code>scripts/assessment/13_summary_satistics.R</code> and stored in <code>data/analysis/summary/</code>. Marker recovery describes detection and retention under the current pipeline settings, not confirmed biological absence.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Group</th>
+<th style="text-align: right;">Genomes</th>
+<th style="text-align: right;">Families</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nucleocytoviricota</td>
+<td style="text-align: right;">221</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td>Pantevenvirales</td>
+<td style="text-align: right;">360</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td>Orthornavirae</td>
+<td style="text-align: right;">7,443</td>
+<td style="text-align: right;">136</td>
+</tr>
+</tbody>
+</table>
+<p><em>Values are read directly from <code>database_summary.tsv</code> when the website is rendered. Regenerate this file after rebuilding VirMarkDB.</em></p>
 </section>
-<section id="nucleocytoviricota-marker-coverage" class="level1">
-<h1>Nucleocytoviricota marker coverage</h1>
-<p><em>Nucleocytoviricota</em> genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance.</p>
-<section id="marker-distribution-across-genomes" class="level2">
-<h2 class="anchored" data-anchor-id="marker-distribution-across-genomes">Marker distribution across genomes</h2>
-<p><img src="data/analysis/figures/ncldv_marker_coverage.png" class="img-fluid"></p>
+<section id="marker-distribution-and-sequence-characteristics" class="level1">
+<h1>Marker distribution and sequence characteristics</h1>
+<section id="marker-recovery-across-genomes" class="level2">
+<h2 class="anchored" data-anchor-id="marker-recovery-across-genomes">Marker recovery across genomes</h2>
+<p><img src="data/analysis/figures/Figure2A_marker_recovery.png" class="img-fluid"></p>
 </section>
-<section id="marker-distribution-across-families" class="level2">
-<h2 class="anchored" data-anchor-id="marker-distribution-across-families">Marker distribution across families</h2>
-<p><img src="data/analysis/figures/ncldv_family_heatmap.png" class="img-fluid"></p>
+<section id="marker-positive-genomes-and-retained-sequences" class="level2">
+<h2 class="anchored" data-anchor-id="marker-positive-genomes-and-retained-sequences">Marker-positive genomes and retained sequences</h2>
+<p><img src="data/analysis/figures/Figure2B_marker_positive_vs_sequences.png" class="img-fluid"></p>
 </section>
-<section id="marker-completeness" class="level2">
-<h2 class="anchored" data-anchor-id="marker-completeness">Marker completeness</h2>
-<p><img src="data/analysis/figures/ncldv_marker_completeness.png" class="img-fluid"></p>
+<section id="protein-length-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="protein-length-distributions">Protein length distributions</h2>
+<p><img src="data/analysis/figures/Figure2C_protein_length_distribution.png" class="img-fluid"></p>
 </section>
-<section id="phylogenetic-diversity" class="level2">
-<h2 class="anchored" data-anchor-id="phylogenetic-diversity">Phylogenetic diversity</h2>
-<p>Phylogenetic analyses based on concatenated marker-gene alignments were performed to evaluate the coherence of selected reference sequences.</p>
-<p><img src="data/tree_five_markers.png" class="img-fluid"></p>
+<section id="multiple-marker-copies" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-marker-copies">Multiple marker copies</h2>
+<p><img src="data/analysis/figures/Figure2D_multicopy_genomes.png" class="img-fluid"></p>
+</section>
+<section id="taxonomic-representation" class="level2">
+<h2 class="anchored" data-anchor-id="taxonomic-representation">Taxonomic representation</h2>
+<p><img src="data/analysis/figures/Figure2E_marker_taxonomic_diversity.png" class="img-fluid"></p>
+</section>
+<section id="hmm-hit-scores" class="level2">
+<h2 class="anchored" data-anchor-id="hmm-hit-scores">HMM hit scores</h2>
+<p><img src="data/analysis/figures/FigureS1_HMM_scores.png" class="img-fluid"></p>
+<p>The full-sequence bit scores describe retained HMMER matches; they should not be interpreted as a direct comparison of marker quality across HMM profiles.</p>
 </section>
 </section>
-<section id="pantevenvirales-marker-coverage" class="level1">
-<h1>Pantevenvirales marker coverage</h1>
+<section id="taxonomic-marker-coverage" class="level1">
+<h1>Taxonomic marker coverage</h1>
+<section id="nucleocytoviricota" class="level2">
+<h2 class="anchored" data-anchor-id="nucleocytoviricota">Nucleocytoviricota</h2>
+<p><em>Nucleocytoviricota</em> genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance. The figure below shows marker recovery across the represented viral families.</p>
+<p><img src="data/analysis/figures/FigureS2_ncldv_family_heatmap.png" class="img-fluid"></p>
+</section>
+<section id="pantevenvirales" class="level2">
+<h2 class="anchored" data-anchor-id="pantevenvirales">Pantevenvirales</h2>
 <p><em>Pantevenvirales</em> representatives are characterized using the g23 major capsid protein marker.</p>
-<p><img src="data/analysis/figures/pantevenvirales_family_g23.png" class="img-fluid"></p>
+<p><img src="data/analysis/figures/FigureS3_pantevenvirales_gp23.png" class="img-fluid"></p>
 </section>
-<section id="orthornavirae-marker-coverage" class="level1">
-<h1>Orthornavirae marker coverage</h1>
-<p>RNA viruses are represented through the RNA-dependent RNA polymerase (RdRp) marker.</p>
-<p><img src="data/analysis/figures/orthornavirae_phylum.png" class="img-fluid"></p>
+<section id="orthornavirae" class="level2">
+<h2 class="anchored" data-anchor-id="orthornavirae">Orthornavirae</h2>
+<p>RNA viruses are represented through the RNA-dependent RNA polymerase (RdRp) marker, detected using RdRp-scan profiles.</p>
+<p><img src="data/analysis/figures/FigureS4_orthornavirae_rdrp.png" class="img-fluid"></p>
+</section>
 </section>
 <section id="notes-and-limitations" class="level1">
 <h1>Notes and limitations</h1>
@@ -334,7 +382,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/est-oup\.github\.io\/VirMarkDB\/");
+      var filterRegex = new RegExp("https:\/\/virmarkdb\.github\.io\/VirMarkDB\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -669,23 +717,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Est-oup/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/Est-oup/VirMarkDB/blob/main/analysis.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/virmarkdb/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/virmarkdb/VirMarkDB/blob/main/analysis.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB/issues">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB/issues">
       <i class="bi bi-exclamation-circle" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://zenodo.org/">
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.23605715">
 <p>Zenodo</p>
 </a>
   </li>  

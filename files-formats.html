@@ -127,17 +127,17 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB/issues"> <i class="bi bi-exclamation-circle" role="img">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB/issues"> <i class="bi bi-exclamation-circle" role="img">
 </i> 
 <span class="menu-text">Issues</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://zenodo.org/"> 
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.23605715"> 
 <span class="menu-text">Zenodo</span></a>
   </li>  
 </ul>
@@ -164,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#virus-informations" id="toc-virus-informations" class="nav-link" data-scroll-target="#virus-informations">Virus informations</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Est-oup/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/Est-oup/VirMarkDB/blob/main/files-formats.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/virmarkdb/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/virmarkdb/VirMarkDB/blob/main/files-formats.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -216,11 +216,11 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td><code>&lt;marker_group_id&gt;_protein.fasta</code></td>
-<td>Protein sequences of the retained ORFs</td>
+<td>Retained marker protein sequences (the selected HMM domain envelope for RdRp; otherwise the retained ORF)</td>
 </tr>
 <tr class="even">
 <td><code>&lt;marker_group_id&gt;_nucleotide.fasta</code></td>
-<td>Nucleotide sequences of the retained ORFs</td>
+<td>Corresponding nucleotide sequences of the retained marker regions</td>
 </tr>
 <tr class="odd">
 <td><code>&lt;marker_group_id&gt;_virus_orf_description.tsv</code></td>
@@ -257,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><code>group_id</code></td>
-<td>Viral group associated with the marker (e.g.&nbsp;Nucleocytoviricota, Orthornavirae, Pantevenvirales)</td>
+<td>Lowercase marker scope identifier (e.g.&nbsp;<code>nucleocytoviricota</code>, <code>orthornavirae</code>, <code>pantevenvirales</code>)</td>
 </tr>
 <tr class="even">
 <td><code>marker</code></td>
@@ -265,39 +265,47 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><code>evalue</code></td>
-<td>HMMER/RdRp-scan significance value associated with the marker detection</td>
+<td>Full-sequence HMMER E-value for the selected hit</td>
 </tr>
 <tr class="even">
 <td><code>score</code></td>
-<td>Detection score associated with the marker hit</td>
+<td>Full-sequence HMMER bit score for the selected hit</td>
 </tr>
 <tr class="odd">
 <td><code>ORF_length_aa</code></td>
-<td>Length of the predicted ORF in amino acids</td>
+<td>Length of the original predicted ORF in amino acids</td>
+</tr>
+<tr class="even">
+<td><code>marker_length_AA</code></td>
+<td>Length of the exported marker protein sequence in amino acids</td>
+</tr>
+<tr class="odd">
+<td><code>marker_length_NT</code></td>
+<td>Length of the exported marker nucleotide sequence in nucleotides</td>
 </tr>
 <tr class="even">
 <td><code>position_start</code></td>
-<td>Start position of the predicted ORF on the genome/protein sequence</td>
+<td>Predicted ORF start coordinate on the source nucleotide sequence (Prodigal)</td>
 </tr>
 <tr class="odd">
 <td><code>position_end</code></td>
-<td>End position of the predicted ORF on the genome/protein sequence</td>
+<td>Predicted ORF end coordinate on the source nucleotide sequence (Prodigal)</td>
 </tr>
 <tr class="even">
 <td><code>ali_from</code></td>
-<td>Start position of the aligned region</td>
+<td>Start position of the HMMER alignment on the original predicted ORF</td>
 </tr>
 <tr class="odd">
 <td><code>ali_to</code></td>
-<td>End position of the aligned region</td>
+<td>End position of the HMMER alignment on the original predicted ORF</td>
 </tr>
 <tr class="even">
 <td><code>env_from</code></td>
-<td>Start position of the HMM envelope region</td>
+<td>Start of the selected HMMER domain envelope on the original predicted ORF</td>
 </tr>
 <tr class="odd">
 <td><code>env_to</code></td>
-<td>End position of the HMM envelope region</td>
+<td>End of the selected HMMER domain envelope on the original predicted ORF</td>
 </tr>
 <tr class="even">
 <td><code>Species</code></td>
@@ -309,6 +317,19 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For RdRp, <code>ali_from</code>, <code>ali_to</code>, <code>env_from</code> and <code>env_to</code> refer to the original ORF, while the exported FASTA contains only the selected domain envelope. The exported protein therefore begins at position 1 of that extracted region.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="virus-informations" class="level2">
@@ -327,11 +348,11 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td><code>virus_compo_taxo.tsv</code></td>
-<td>Wide-format table: one row per genome, one column per marker group</td>
+<td>Wide-format table: one row per genome with at least one retained marker; marker columns store ORF identifiers</td>
 </tr>
 <tr class="even">
 <td><code>virus_metadata.tsv</code></td>
-<td>Genome-level metadata: identifiers, virus names, host source, taxonomy</td>
+<td>Genome-level metadata for genomes with retained markers: identifiers, virus names, host source, taxonomy</td>
 </tr>
 </tbody>
 </table>
@@ -443,7 +464,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/est-oup\.github\.io\/VirMarkDB\/");
+      var filterRegex = new RegExp("https:\/\/virmarkdb\.github\.io\/VirMarkDB\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -778,23 +799,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Est-oup/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/Est-oup/VirMarkDB/blob/main/files-formats.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/virmarkdb/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/virmarkdb/VirMarkDB/blob/main/files-formats.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB/issues">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB/issues">
       <i class="bi bi-exclamation-circle" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://zenodo.org/">
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.23605715">
 <p>Zenodo</p>
 </a>
   </li>  

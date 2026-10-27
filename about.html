@@ -127,17 +127,17 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB/issues"> <i class="bi bi-exclamation-circle" role="img">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB/issues"> <i class="bi bi-exclamation-circle" role="img">
 </i> 
 <span class="menu-text">Issues</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://zenodo.org/"> 
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.23605715"> 
 <span class="menu-text">Zenodo</span></a>
   </li>  
 </ul>
@@ -166,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
   <li><a href="#notes-and-limitations" id="toc-notes-and-limitations" class="nav-link" data-scroll-target="#notes-and-limitations">Notes and limitations</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Est-oup/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/Est-oup/VirMarkDB/blob/main/about.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/virmarkdb/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/virmarkdb/VirMarkDB/blob/main/about.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -206,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Authors</td>
-<td>Paul Estoup, Nicolas Henry, Erwan Corre, Anne-Claire Baudoux</td>
+<td>Estoup P, Baudoux A-C, Corre E, Blanc G, Jackson V &amp; Henry N</td>
 </tr>
 <tr class="odd">
 <td>Version</td>
@@ -214,11 +214,11 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Date released</td>
-<td>2026-XX-XX</td>
+<td>2026-10-26</td>
 </tr>
 <tr class="odd">
 <td>DOI</td>
-<td>To be added after Zenodo deposition</td>
+<td><a href="https://doi.org/10.5281/zenodo.23605715">https://doi.org/10.5281/zenodo.23605715</a></td>
 </tr>
 <tr class="even">
 <td>Repository</td>
@@ -245,7 +245,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Suggested citation</strong></p>
-<p>TO_COMPLETE TO_COMPLETE. VirMarkDB. Version 1.0.0. https://github.com/Est-oup/VirMarkDB</p>
+<p>Estoup P, Baudoux A-C, Corre E, Blanc G, Jackson V &amp; Henry N. VirMarkDB. Zenodo. <a href="https://doi.org/10.5281/zenodo.23605715">https://doi.org/10.5281/zenodo.23605715</a>. Check the version and publication date in the Zenodo record before citing a specific release.</p>
 </div>
 </div>
 </section>
@@ -277,7 +277,7 @@ Note
 <p><strong>ORF prediction.</strong> ORFs are predicted with Prodigal in metagenomic mode. This approach is practical and robust, but some viral coding sequences may still be difficult to predict correctly. Introns, inteins, sequencing artefacts, or internal stop codons may lead to truncated or fragmented predicted proteins.</p>
 <p><strong>Partial genome records.</strong> Some source genomes are partial. Missing markers in those entries may reflect incomplete sequence coverage rather than true biological absence.</p>
 <p><strong>HMM profile performance.</strong> Profile sensitivity depends on the diversity, quality, and taxonomic coverage of the seed reference protein sets. Under-represented lineages may show lower detection rates.</p>
-<p><strong>Marker-group scope.</strong> HMM profiles are defined per marker group, each linking a marker gene, a taxonomic scope, a reference protein set, and a corresponding HMM profile. Divergent lineages outside current marker-group scope may not be detected reliably.</p>
+<p><strong>Marker-group scope.</strong> Marker groups link a gene, a taxonomic scope and its associated HMM resource; RdRp uses external RdRp-scan profiles rather than a locally built HMM. Divergent lineages outside current marker-group scope may not be detected reliably.</p>
 <p><strong>Missing value interpretation.</strong> <code>NA</code> or zero values in marker presence tables mean <em>not detected or not retained under the current workflow and thresholds</em>, not confirmed biological absence.</p>
 <p><strong>External protein assessment.</strong> The external protein assessment is an empirical procedure designed to identify potentially missing or underrepresented marker diversity in VirMarkDB. It should not be interpreted as a formal performance benchmark based on a ground-truth dataset.</p>
 <p><strong>Current taxonomic scope.</strong> The database currently covers three viral groups: giant viruses (Nucleocytoviricota), phages (Pantevenvirales, via <code>g23</code>), and RNA viruses (Orthornavirae, via <code>rdrp</code>). Additional viral groups will be added as suitable marker references and genome mappings become available.</p>
@@ -376,7 +376,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/est-oup\.github\.io\/VirMarkDB\/");
+      var filterRegex = new RegExp("https:\/\/virmarkdb\.github\.io\/VirMarkDB\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -711,23 +711,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Est-oup/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/Est-oup/VirMarkDB/blob/main/about.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/virmarkdb/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/virmarkdb/VirMarkDB/blob/main/about.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB/issues">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB/issues">
       <i class="bi bi-exclamation-circle" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://zenodo.org/">
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.23605715">
 <p>Zenodo</p>
 </a>
   </li>  

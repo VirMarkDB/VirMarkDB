@@ -127,17 +127,17 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB/issues"> <i class="bi bi-exclamation-circle" role="img">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB/issues"> <i class="bi bi-exclamation-circle" role="img">
 </i> 
 <span class="menu-text">Issues</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://zenodo.org/"> 
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.23605715"> 
 <span class="menu-text">Zenodo</span></a>
   </li>  
 </ul>
@@ -166,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#why-marker-groups-exist" id="toc-why-marker-groups-exist" class="nav-link" data-scroll-target="#why-marker-groups-exist">Why marker groups exist</a></li>
   <li><a href="#where-the-data-lives" id="toc-where-the-data-lives" class="nav-link" data-scroll-target="#where-the-data-lives">Where the data lives</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/Est-oup/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/Est-oup/VirMarkDB/blob/main/database.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/virmarkdb/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/virmarkdb/VirMarkDB/blob/main/database.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -192,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="taxonomic-scope" class="level2">
 <h2 class="anchored" data-anchor-id="taxonomic-scope">Taxonomic scope</h2>
-<p>VirMarkDB currently covers three viral groups, each targeted through a different marker gene. Taxonomy is derived from the ICTV Virus Metadata Resource <a href="https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260320.xlsx">VMR_MSL41.v1.20260320</a>.</p>
+<p>VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource <a href="https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260320.xlsx">VMR_MSL41.v1.20260320</a>.</p>
 <p><a href="https://ictv.global/"><img src="assets/ictv_logo.png" class="img-fluid"></a></p>
 <table class="caption-top table">
 <colgroup>
@@ -218,7 +218,7 @@ ul.task-list li input[type="checkbox"] {
 <td>Giant viruses</td>
 <td>Bamfordvirae</td>
 <td>Nucleocytoviricota</td>
-<td>224</td>
+<td>221</td>
 <td>15</td>
 <td><code>atpase</code>, <code>dnapol</code>, <code>majorcapsid</code>, <code>primase</code>, <code>rnapol1</code>, <code>rnapol2</code>, <code>tf2s</code>, <code>vltf3</code></td>
 </tr>
@@ -226,21 +226,21 @@ ul.task-list li input[type="checkbox"] {
 <td>Phages</td>
 <td>Heunggongvirae</td>
 <td>Pantevenvirales</td>
-<td>431</td>
-<td>9</td>
+<td>360</td>
+<td>3</td>
 <td><code>g23</code></td>
 </tr>
 <tr class="odd">
 <td>RNA viruses</td>
 <td>Orthornavirae</td>
-<td>Lenarviricota, Pisuviricota, Kitrinoviricota, Negarnaviricota, Duplornaviricota</td>
-<td>7,950</td>
-<td>137</td>
+<td>Multiple phyla</td>
+<td>7,443</td>
+<td>136</td>
 <td><code>rdrp</code></td>
 </tr>
 </tbody>
 </table>
-<p>Taxonomy from Kingdom to Species is derived from the ICTV VMR. Manually added genomes follow the same taxonomy fields. See <a href="./workflow.html#additional-genome-inputs">Workflow → Additional genome inputs</a> for how these are incorporated.</p>
+<p>The counts above describe genomes in the current processing manifest and are taken from <code>scope_summary.tsv</code> (not only genomes with a retained marker). Taxonomy from Kingdom to Species is derived from the ICTV VMR. Manually added genomes follow the same taxonomy fields. See <a href="./workflow.html#additional-genome-inputs">Workflow → Additional genome inputs</a> for how these are incorporated.</p>
 </section>
 <section id="marker-genes" class="level2">
 <h2 class="anchored" data-anchor-id="marker-genes">Marker genes</h2>
@@ -327,7 +327,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="why-marker-groups-exist" class="level2">
 <h2 class="anchored" data-anchor-id="why-marker-groups-exist">Why marker groups exist</h2>
-<p>Some marker genes are too divergent across viral lineages to be represented by a single HMM profile. VirMarkDB solves this with <strong>marker groups</strong>: each one ties together a marker gene, a taxonomic scope, a reference protein set, and a dedicated HMM profile built from that set. This keeps a common marker-gene framework across the database while letting each lineage be represented by a profile calibrated on its own reference sequences.</p>
+<p>Some marker genes are too divergent across viral lineages to be represented by a single HMM profile. VirMarkDB solves this with <strong>marker groups</strong>: each one ties together a marker gene, a taxonomic scope, a reference protein set, and an associated HMM resource. The Nucleocytoviricota and gp23 profiles are constructed locally, whereas RdRp detection uses the external RdRp-scan profile database. This keeps a common marker-gene framework across the database while letting each lineage be represented by a profile calibrated on its own reference sequences.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -441,7 +441,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/est-oup\.github\.io\/VirMarkDB\/");
+      var filterRegex = new RegExp("https:\/\/virmarkdb\.github\.io\/VirMarkDB\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -776,23 +776,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Est-oup/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/Est-oup/VirMarkDB/blob/main/database.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/virmarkdb/VirMarkDB/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/virmarkdb/VirMarkDB/blob/main/database.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Est-oup/VirMarkDB/issues">
+    <a class="nav-link" href="https://github.com/virmarkdb/VirMarkDB/issues">
       <i class="bi bi-exclamation-circle" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://zenodo.org/">
+    <a class="nav-link" href="https://doi.org/10.5281/zenodo.23605715">
 <p>Zenodo</p>
 </a>
   </li>  
