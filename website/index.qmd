@@ -39,7 +39,7 @@ marker genes
 
 ::: {.snapshot-card}
 ### `r stat("Genomes")`
-genomes in the processing manifest
+genomes represented in VirMarkDB
 :::
 
 :::

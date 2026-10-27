@@ -1,12 +1,13 @@
+
 project:
   type: website
-  output-dir: .
+  output-dir: _site
 
 website:
   title: "VirMarkDB"
   description: "Reference database of viral marker-gene sequences"
-  site-url: "https://est-oup.github.io/VirMarkDB/"
-  repo-url: "https://github.com/Est-oup/VirMarkDB"
+  site-url: "https://virmarkdb.github.io/VirMarkDB/"
+  repo-url: "https://github.com/virmarkdb/VirMarkDB"
   repo-actions: [issue, source]
   favicon: assets/logo_virmark_blank.png
   image: assets/logo_virmark_blank.png
@@ -32,22 +33,22 @@ website:
         href: about.qmd
     right:
       - icon: github
-        href: https://github.com/Est-oup/VirMarkDB
+        href: https://github.com/virmarkdb/VirMarkDB
       - icon: exclamation-circle
-        href: https://github.com/Est-oup/VirMarkDB/issues
+        href: https://github.com/virmarkdb/VirMarkDB/issues
         text: "Issues"
       - text: "Zenodo"
-        href: https://zenodo.org/
+        href: https://doi.org/10.5281/zenodo.23605715
 
   page-footer:
     left: "VirMarkDB — viral marker database"
     right:
       - icon: github
-        href: https://github.com/Est-oup/VirMarkDB
+        href: https://github.com/virmarkdb/VirMarkDB
       - icon: exclamation-circle
-        href: https://github.com/Est-oup/VirMarkDB/issues
+        href: https://github.com/virmarkdb/VirMarkDB/issues
       - text: "Zenodo"
-        href: https://zenodo.org/
+        href: https://doi.org/10.5281/zenodo.23605715
 
   back-to-top-navigation: true
 
