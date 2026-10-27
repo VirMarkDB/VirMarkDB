@@ -198,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This page summarizes the taxonomic coverage, marker distribution and reference sequence composition of the current VirMarkDB release.</p>
+<p>This page summarizes taxonomic representation, marker detection and characteristics of retained sequences in the current VirMarkDB output. These descriptive statistics are not an independent sensitivity/specificity benchmark.</p>
 <p>VirMarkDB currently integrates curated marker-gene references from three viral groups with distinct marker strategies:</p>
 <ul>
 <li><em>Nucleocytoviricota</em>, represented by eight conserved marker genes used for multi-marker characterization;</li>
@@ -241,6 +241,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Marker distribution and sequence characteristics</h1>
 <section id="marker-recovery-across-genomes" class="level2">
 <h2 class="anchored" data-anchor-id="marker-recovery-across-genomes">Marker recovery across genomes</h2>
+<p>Recovery is the percentage of processed genomes in each marker scope with at least one retained marker sequence. It is influenced by genome completeness and the detection/filtering settings.</p>
 <p><img src="data/analysis/figures/Figure2A_marker_recovery.png" class="img-fluid"></p>
 </section>
 <section id="marker-positive-genomes-and-retained-sequences" class="level2">
@@ -253,6 +254,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="multiple-marker-copies" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-marker-copies">Multiple marker copies</h2>
+<p>Counts refer to genomes with more than one retained sequence for a given marker; RdRp retains only the highest-ranked ORF per genome.</p>
 <p><img src="data/analysis/figures/Figure2D_multicopy_genomes.png" class="img-fluid"></p>
 </section>
 <section id="taxonomic-representation" class="level2">
@@ -261,7 +263,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="hmm-hit-scores" class="level2">
 <h2 class="anchored" data-anchor-id="hmm-hit-scores">HMM hit scores</h2>
-<p><img src="data/analysis/figures/FigureS1_HMM_scores.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Figure S1 is temporarily withheld pending regeneration: the exported HMM-score table must retain the correct marker identifier for each hit. Run the corrected <code>scripts/assessment/13_summary_satistics.R</code> and verify <code>marker_hmm_scores.tsv</code> before restoring the figure.</p>
+</div>
+</div>
 <p>The full-sequence bit scores describe retained HMMER matches; they should not be interpreted as a direct comparison of marker quality across HMM profiles.</p>
 </section>
 </section>
@@ -269,8 +283,20 @@ ul.task-list li input[type="checkbox"] {
 <h1>Taxonomic marker coverage</h1>
 <section id="nucleocytoviricota" class="level2">
 <h2 class="anchored" data-anchor-id="nucleocytoviricota">Nucleocytoviricota</h2>
-<p><em>Nucleocytoviricota</em> genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance. The figure below shows marker recovery across the represented viral families.</p>
-<p><img src="data/analysis/figures/FigureS2_ncldv_family_heatmap.png" class="img-fluid"></p>
+<p><em>Nucleocytoviricota</em> genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance. Family-level recovery is defined as the number of genomes with a retained marker divided by the number of genomes assessed in that family.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Figure S2 is temporarily withheld pending regeneration: the family-level recovery percentages in the previous export were incorrect. Run the corrected <code>scripts/assessment/13_summary_satistics.R</code> and confirm every recovery value lies between 0 and 100% before restoring the heatmap.</p>
+</div>
+</div>
 </section>
 <section id="pantevenvirales" class="level2">
 <h2 class="anchored" data-anchor-id="pantevenvirales">Pantevenvirales</h2>

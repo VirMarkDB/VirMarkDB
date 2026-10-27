@@ -53,7 +53,7 @@
     "href": "workflow.html#input-and-provenance",
     "title": "Workflow",
     "section": "Input and provenance",
-    "text": "Input and provenance\n\nICTV resources\nThe initial genome manifest and taxonomy come from the ICTV Virus Metadata Resource VMR_MSL41.v1.20260320 (released 2026-03-20), providing virus names, ICTV identifiers, full taxonomy, GenBank accessions, genome composition, and host-source metadata.\n\n\nAdditional genome inputs\nManually added genomes (not yet covered by the ICTV VMR) are listed in input/manual_genomes_ncbi.tsv and merged using the same taxonomy fields.\n\n\nShow input/manual_genomes_ncbi.tsv (excerpt)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvirus_id\nFamily\nGenus\nSpecies\nSource\nVirus_names_abrv\nHost_source\n\n\n\n\n\nNC_075136\nAllomimiviridae\nOceanusvirus\nO. kaneohense\nMANUAL_NCBI\nTsV1\nalgae\n\n\n\nPP728251\nPhycodnaviridae\nPrasinovirus\nP. micromonas polaris\nMANUAL_NCBI\nMpoV-46T\nalgae\n\n\n\nNC_076895\nYaraviridae\nYaravirus\nY. brasiliensis\nMANUAL_NCBI\nBHMG\nprotists\n\n\n\n\n\n\n\nMarker-group configuration\ninput/mapfile.tsv is the single source of truth for which marker genes are processed against which taxonomic scopes. Each row defines one marker group: a marker gene, a taxonomic scope, a reference protein set, and its associated HMM resource (built locally or obtained from RdRp-scan). The pipeline uses this file at every stage: reference preparation, HMM construction, and HMM search. So each genome is only searched against the profiles relevant to its taxonomic scope.\n\n\nShow input/mapfile.tsv\n\n\n\n\n\n\n\n\n\n\n\n\ngroup_id\ntaxo_rank\ntaxo_value\nmarker\nmarker_group_id\nmanual_file\n\n\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\nmajorcapsid\nmajorcapsid_nucleocytoviricota\nmajorcapsid_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\ndnapol\ndnapol_nucleocytoviricota\ndnapol_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\natpase\natpase_nucleocytoviricota\natpase_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\nprimase\nprimase_nucleocytoviricota\nprimase_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\nrnapol1\nrnapol1_nucleocytoviricota\nrnapol1_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\nrnapol2\nrnapol2_nucleocytoviricota\nrnapol2_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\ntf2s\ntf2s_nucleocytoviricota\ntf2s_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\nvltf3\nvltf3_nucleocytoviricota\nvltf3_nucleocytoviricota.tsv\n\n\npantevenvirales\nOrder\nPantevenvirales\ng23\ng23_pantevenvirales\ngp23_pantevenvirales.tsv\n\n\northornavirae\nKingdom\nOrthornavirae\nrdrp\nrdrp_orthornavirae\nrdrp_orthornavirae.tsv\n\n\n\n\nDuring HMM search, genome_marker_map.tsv resolves which genomes fall within each marker group’s taxonomic scope, and therefore which profiles apply to which genome. The conceptual rationale for splitting markers this way is covered in Database → Why marker groups exist.\n\n\nHMM profile resources\nFor the eight Nucleocytoviricota markers and gp23, HMM profiles are built from marker-specific reference protein sets stored in output/references_protein/, sourced from three places. RdRp detection instead uses the external RdRp-scan profile database:\n\n\n\n\n\n\n\nSource type\nDescription\n\n\n\n\nPublished reference datasets\nInitial conserved NCLDV marker-protein reference set\n\n\nManual curation\nAdded when a marker was missing or poorly represented\n\n\nAssessment-guided additions\nAdded after assessment analysis to improve marker coverage"
+    "text": "Input and provenance\n\nICTV resources\nThe initial genome manifest and taxonomy come from the ICTV Virus Metadata Resource VMR_MSL41.v1.20260729 (file selected by 01_generate_manifest.R; verify the exact source release metadata), providing virus names, ICTV identifiers, full taxonomy, GenBank accessions, genome composition, and host-source metadata.\n\n\nAdditional genome inputs\nManually added genomes (not yet covered by the ICTV VMR) are listed in input/manual_genomes_ncbi.tsv and merged using the same taxonomy fields.\n\n\nShow input/manual_genomes_ncbi.tsv (excerpt)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvirus_id\nFamily\nGenus\nSpecies\nSource\nVirus_names_abrv\nHost_source\n\n\n\n\n\nNC_075136\nAllomimiviridae\nOceanusvirus\nO. kaneohense\nMANUAL_NCBI\nTsV1\nalgae\n\n\n\nPP728251\nPhycodnaviridae\nPrasinovirus\nP. micromonas polaris\nMANUAL_NCBI\nMpoV-46T\nalgae\n\n\n\nNC_076895\nYaraviridae\nYaravirus\nY. brasiliensis\nMANUAL_NCBI\nBHMG\nprotists\n\n\n\n\n\n\n\nMarker-group configuration\ninput/mapfile.tsv is the single source of truth for which marker genes are processed against which taxonomic scopes. Each row defines one marker group: a marker gene, a taxonomic scope, a reference protein set, and its associated HMM resource (built locally or obtained from RdRp-scan). The pipeline uses this file at every stage: reference preparation, HMM construction, and HMM search. So each genome is only searched against the profiles relevant to its taxonomic scope.\n\n\nShow input/mapfile.tsv\n\n\n\n\n\n\n\n\n\n\n\n\ngroup_id\ntaxo_rank\ntaxo_value\nmarker\nmarker_group_id\nmanual_file\n\n\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\nmajorcapsid\nmajorcapsid_nucleocytoviricota\nmajorcapsid_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\ndnapol\ndnapol_nucleocytoviricota\ndnapol_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\natpase\natpase_nucleocytoviricota\natpase_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\nprimase\nprimase_nucleocytoviricota\nprimase_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\nrnapol1\nrnapol1_nucleocytoviricota\nrnapol1_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\nrnapol2\nrnapol2_nucleocytoviricota\nrnapol2_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\ntf2s\ntf2s_nucleocytoviricota\ntf2s_nucleocytoviricota.tsv\n\n\nnucleocytoviricota\nPhylum\nNucleocytoviricota\nvltf3\nvltf3_nucleocytoviricota\nvltf3_nucleocytoviricota.tsv\n\n\npantevenvirales\nOrder\nPantevenvirales\ng23\ng23_pantevenvirales\ngp23_pantevenvirales.tsv\n\n\northornavirae\nKingdom\nOrthornavirae\nrdrp\nrdrp_orthornavirae\nrdrp_orthornavirae.tsv\n\n\n\n\nDuring HMM search, genome_marker_map.tsv resolves which genomes fall within each marker group’s taxonomic scope, and therefore which profiles apply to which genome. The conceptual rationale for splitting markers this way is covered in Database → Why marker groups exist.\n\n\nHMM profile resources\nFor the eight Nucleocytoviricota markers and gp23, HMM profiles are built from marker-specific reference protein sets stored in output/references_protein/, sourced from three places. RdRp detection instead uses the external RdRp-scan profile database:\n\n\n\n\n\n\n\nSource type\nDescription\n\n\n\n\nPublished reference datasets\nInitial conserved NCLDV marker-protein reference set\n\n\nManual curation\nAdded when a marker was missing or poorly represented\n\n\nAssessment-guided additions\nAdded after assessment analysis to improve marker coverage"
   },
   {
     "objectID": "workflow.html#pipeline",
@@ -67,7 +67,7 @@
     "href": "workflow.html#virmarkdb-assessment",
     "title": "Workflow",
     "section": "VirMarkDB assessment",
-    "text": "VirMarkDB assessment\nVirMarkDB is assessed against broader viral protein pools extracted from a local NCBI NR database to identify marker diversity missing or underrepresented in the current release.\n\n\n\nVirMarkDB workflow complete\n\n\n\n\n\n\n\n\n\n\nStep\nDescription\nScript\n\n\n\n\n1\nExtract viral protein pools from NR, split by marker via title-based filters\n07_scrap_viral_protein_ncbi.bash\n\n\n2\nSelf-align each marker pool to flag isolated/suspicious sequences\n08_align_pool_vs_pool.bash\n\n\n3\nAnalyse self-alignments, filter likely misannotated proteins\n09_results_align_pool_vs_pool.R\n\n\n4\nCompare filtered pool against current VirMarkDB\n10_align_pool_VirMarkDB.bash\n\n\n5\nIdentify proteins not covered by the current release\n11_analyse_results_align_pool_VirMarkDB.R\n\n\n6\nCluster missing proteins with CD-HIT to reduce redundancy\n12_clusterise_missing_prot.bash"
+    "text": "VirMarkDB assessment\nThis external-protein assessment identifies candidate diversity potentially missing from VirMarkDB. It does not independently quantify sensitivity, specificity or false-positive rates.\nVirMarkDB is assessed against broader viral protein pools extracted from a local NCBI NR database to identify marker diversity missing or underrepresented in the current release.\n\n\n\nVirMarkDB workflow complete\n\n\n\n\n\n\n\n\n\n\nStep\nDescription\nScript\n\n\n\n\n1\nExtract viral protein pools from NR, split by marker via title-based filters\n07_scrap_viral_protein_ncbi.bash\n\n\n2\nSelf-align each marker pool to flag isolated/suspicious sequences\n08_align_pool_vs_pool.bash\n\n\n3\nAnalyse self-alignments, filter likely misannotated proteins\n09_results_align_pool_vs_pool.R\n\n\n4\nCompare filtered pool against current VirMarkDB\n10_align_pool_VirMarkDB.bash\n\n\n5\nIdentify proteins not covered by the current release\n11_analyse_results_align_pool_VirMarkDB.R\n\n\n6\nCluster missing proteins with CD-HIT to reduce redundancy\n12_clusterise_missing_prot.bash"
   },
   {
     "objectID": "workflow.html#software-versions",
@@ -81,14 +81,14 @@
     "href": "analysis.html",
     "title": "Analyses",
     "section": "",
-    "text": "This page summarizes the taxonomic coverage, marker distribution and reference sequence composition of the current VirMarkDB release.\nVirMarkDB currently integrates curated marker-gene references from three viral groups with distinct marker strategies:\nFor database construction and workflow details, see Database and Workflow."
+    "text": "This page summarizes taxonomic representation, marker detection and characteristics of retained sequences in the current VirMarkDB output. These descriptive statistics are not an independent sensitivity/specificity benchmark.\nVirMarkDB currently integrates curated marker-gene references from three viral groups with distinct marker strategies:\nFor database construction and workflow details, see Database and Workflow."
   },
   {
     "objectID": "analysis.html#marker-recovery-across-genomes",
     "href": "analysis.html#marker-recovery-across-genomes",
     "title": "Analyses",
     "section": "Marker recovery across genomes",
-    "text": "Marker recovery across genomes"
+    "text": "Marker recovery across genomes\nRecovery is the percentage of processed genomes in each marker scope with at least one retained marker sequence. It is influenced by genome completeness and the detection/filtering settings."
   },
   {
     "objectID": "analysis.html#marker-positive-genomes-and-retained-sequences",
@@ -109,7 +109,7 @@
     "href": "analysis.html#multiple-marker-copies",
     "title": "Analyses",
     "section": "Multiple marker copies",
-    "text": "Multiple marker copies"
+    "text": "Multiple marker copies\nCounts refer to genomes with more than one retained sequence for a given marker; RdRp retains only the highest-ranked ORF per genome."
   },
   {
     "objectID": "analysis.html#taxonomic-representation",
@@ -123,14 +123,14 @@
     "href": "analysis.html#hmm-hit-scores",
     "title": "Analyses",
     "section": "HMM hit scores",
-    "text": "HMM hit scores\n\nThe full-sequence bit scores describe retained HMMER matches; they should not be interpreted as a direct comparison of marker quality across HMM profiles."
+    "text": "HMM hit scores\n\n\n\n\n\n\nImportant\n\n\n\nFigure S1 is temporarily withheld pending regeneration: the exported HMM-score table must retain the correct marker identifier for each hit. Run the corrected scripts/assessment/13_summary_satistics.R and verify marker_hmm_scores.tsv before restoring the figure.\n\n\nThe full-sequence bit scores describe retained HMMER matches; they should not be interpreted as a direct comparison of marker quality across HMM profiles."
   },
   {
     "objectID": "analysis.html#nucleocytoviricota",
     "href": "analysis.html#nucleocytoviricota",
     "title": "Analyses",
     "section": "Nucleocytoviricota",
-    "text": "Nucleocytoviricota\nNucleocytoviricota genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance. The figure below shows marker recovery across the represented viral families."
+    "text": "Nucleocytoviricota\nNucleocytoviricota genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance. Family-level recovery is defined as the number of genomes with a retained marker divided by the number of genomes assessed in that family.\n\n\n\n\n\n\nImportant\n\n\n\nFigure S2 is temporarily withheld pending regeneration: the family-level recovery percentages in the previous export were incorrect. Run the corrected scripts/assessment/13_summary_satistics.R and confirm every recovery value lies between 0 and 100% before restoring the heatmap."
   },
   {
     "objectID": "analysis.html#pantevenvirales",
@@ -151,28 +151,28 @@
     "href": "database.html",
     "title": "Database",
     "section": "",
-    "text": "VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource VMR_MSL41.v1.20260320.\n\n\n\n\n\n\n\n\n\n\n\n\nGroup\nKingdom\nPhylum (scope)\nGenomes\nFamilies\nMarker gene(s)\n\n\n\n\nGiant viruses\nBamfordvirae\nNucleocytoviricota\n221\n15\natpase, dnapol, majorcapsid, primase, rnapol1, rnapol2, tf2s, vltf3\n\n\nPhages\nHeunggongvirae\nPantevenvirales\n360\n3\ng23\n\n\nRNA viruses\nOrthornavirae\nMultiple phyla\n7,443\n136\nrdrp\n\n\n\nThe counts above describe genomes in the current processing manifest and are taken from scope_summary.tsv (not only genomes with a retained marker). Taxonomy from Kingdom to Species is derived from the ICTV VMR. Manually added genomes follow the same taxonomy fields. See Workflow → Additional genome inputs for how these are incorporated."
+    "text": "VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource VMR_MSL41.v1.20260729.\n\n\n\n\n\n\n\n\n\n\n\n\nGroup\nKingdom\nPhylum (scope)\nGenomes\nFamilies\nMarker gene(s)\n\n\n\n\nGiant viruses\nBamfordvirae\nNucleocytoviricota\n221\n15\natpase, dnapol, majorcapsid, primase, rnapol1, rnapol2, tf2s, vltf3\n\n\nPhages\nHeunggongvirae\nPantevenvirales\n360\n3\ng23\n\n\nRNA viruses\nOrthornavirae\nMultiple phyla\n7,443\n136\nrdrp\n\n\n\nThe counts above describe genomes with at least one retained marker in the final VirMarkDB output. They are read from data/analysis/summary/database_summary.tsv, not from the initial genome manifest. The processing manifest includes genomes that may yield no retained marker. Taxonomy from Kingdom to Species is derived from the ICTV VMR; manually added genomes follow the same taxonomy fields. See Workflow → Additional genome inputs for how these are incorporated."
   },
   {
     "objectID": "database.html#taxonomic-scope",
     "href": "database.html#taxonomic-scope",
     "title": "Database",
     "section": "",
-    "text": "VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource VMR_MSL41.v1.20260320.\n\n\n\n\n\n\n\n\n\n\n\n\nGroup\nKingdom\nPhylum (scope)\nGenomes\nFamilies\nMarker gene(s)\n\n\n\n\nGiant viruses\nBamfordvirae\nNucleocytoviricota\n221\n15\natpase, dnapol, majorcapsid, primase, rnapol1, rnapol2, tf2s, vltf3\n\n\nPhages\nHeunggongvirae\nPantevenvirales\n360\n3\ng23\n\n\nRNA viruses\nOrthornavirae\nMultiple phyla\n7,443\n136\nrdrp\n\n\n\nThe counts above describe genomes in the current processing manifest and are taken from scope_summary.tsv (not only genomes with a retained marker). Taxonomy from Kingdom to Species is derived from the ICTV VMR. Manually added genomes follow the same taxonomy fields. See Workflow → Additional genome inputs for how these are incorporated."
+    "text": "VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource VMR_MSL41.v1.20260729.\n\n\n\n\n\n\n\n\n\n\n\n\nGroup\nKingdom\nPhylum (scope)\nGenomes\nFamilies\nMarker gene(s)\n\n\n\n\nGiant viruses\nBamfordvirae\nNucleocytoviricota\n221\n15\natpase, dnapol, majorcapsid, primase, rnapol1, rnapol2, tf2s, vltf3\n\n\nPhages\nHeunggongvirae\nPantevenvirales\n360\n3\ng23\n\n\nRNA viruses\nOrthornavirae\nMultiple phyla\n7,443\n136\nrdrp\n\n\n\nThe counts above describe genomes with at least one retained marker in the final VirMarkDB output. They are read from data/analysis/summary/database_summary.tsv, not from the initial genome manifest. The processing manifest includes genomes that may yield no retained marker. Taxonomy from Kingdom to Species is derived from the ICTV VMR; manually added genomes follow the same taxonomy fields. See Workflow → Additional genome inputs for how these are incorporated."
   },
   {
     "objectID": "database.html#marker-genes",
     "href": "database.html#marker-genes",
     "title": "Database",
     "section": "Marker genes",
-    "text": "Marker genes\nTen conserved marker genes are targeted across the three groups.\n\nGiant viruses (Nucleocytoviricota)\n\n\n\nMarker\nDescription\n\n\n\n\nmajorcapsid\nMajor capsid protein (MCP)\n\n\ndnapol\nDNA polymerase B\n\n\natpase\nPackaging ATPase\n\n\nprimase\nPrimase\n\n\nrnapol1\nRNA polymerase subunit 1\n\n\nrnapol2\nRNA polymerase subunit 2\n\n\ntf2s\nTranscription factor S-II / TFIIS-like\n\n\nvltf3\nViral late transcription factor 3\n\n\n\n\n\nPhages (Pantevenvirales)\n\n\n\nMarker\nDescription\n\n\n\n\ng23\nMajor capsid protein gp23\n\n\n\n\n\nRNA viruses (Orthornavirae)\n\n\n\nMarker\nDescription\n\n\n\n\nrdrp\nRNA-dependent RNA polymerase"
+    "text": "Marker genes\nTen marker genes are targeted across the three groups; they are not universal across all viruses.\n\nGiant viruses (Nucleocytoviricota)\n\n\n\nMarker\nDescription\n\n\n\n\nmajorcapsid\nMajor capsid protein (MCP)\n\n\ndnapol\nDNA polymerase B\n\n\natpase\nPackaging ATPase\n\n\nprimase\nPrimase\n\n\nrnapol1\nRNA polymerase subunit 1\n\n\nrnapol2\nRNA polymerase subunit 2\n\n\ntf2s\nTranscription factor S-II / TFIIS-like\n\n\nvltf3\nViral late transcription factor 3\n\n\n\n\n\nPhages (Pantevenvirales)\n\n\n\nMarker\nDescription\n\n\n\n\ng23\nMajor capsid protein gp23\n\n\n\n\n\nRNA viruses (Orthornavirae)\n\n\n\nMarker\nDescription\n\n\n\n\nrdrp\nRNA-dependent RNA polymerase"
   },
   {
     "objectID": "database.html#why-marker-groups-exist",
     "href": "database.html#why-marker-groups-exist",
     "title": "Database",
     "section": "Why marker groups exist",
-    "text": "Why marker groups exist\nSome marker genes are too divergent across viral lineages to be represented by a single HMM profile. VirMarkDB solves this with marker groups: each one ties together a marker gene, a taxonomic scope, a reference protein set, and an associated HMM resource. The Nucleocytoviricota and gp23 profiles are constructed locally, whereas RdRp detection uses the external RdRp-scan profile database. This keeps a common marker-gene framework across the database while letting each lineage be represented by a profile calibrated on its own reference sequences.\n\n\n\n\n\n\nNote\n\n\n\nThis page describes the concept. The mechanics (how mapfile.tsv encodes marker groups and drives the pipeline) are covered once, in Workflow → Marker-group configuration."
+    "text": "Why marker groups exist\nSome marker genes are too divergent across viral lineages to be represented by a single HMM profile. VirMarkDB solves this with marker groups: each one ties together a marker gene, a taxonomic scope, a reference protein set, and an associated HMM resource. The Nucleocytoviricota and gp23 profiles are constructed locally, whereas RdRp detection uses the external RdRp-scan profile database. This keeps a common marker-gene framework across the database while allowing scope-specific HMM resources. RdRp-scan profiles are externally sourced rather than calibrated within VirMarkDB.\n\n\n\n\n\n\nNote\n\n\n\nThis page describes the concept. The mechanics (how mapfile.tsv encodes marker groups and drives the pipeline) are covered once, in Workflow → Marker-group configuration."
   },
   {
     "objectID": "database.html#where-the-data-lives",
@@ -186,14 +186,14 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Field\nValue\n\n\n\n\nTitle\nVirMarkDB\n\n\nAuthors\nEstoup P, Baudoux A-C, Corre E, Blanc G, Jackson V & Henry N\n\n\nVersion\n0.1.0\n\n\nDate released\n2026-10-26\n\n\nDOI\nhttps://doi.org/10.5281/zenodo.23605715\n\n\nRepository\nhttps://github.com/Est-oup/VirMarkDB\n\n\nURL\nhttps://est-oup.github.io/VirMarkDB/\n\n\nLicense\nCC-BY-4.0\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nSuggested citation\nEstoup P, Baudoux A-C, Corre E, Blanc G, Jackson V & Henry N. VirMarkDB. Zenodo. https://doi.org/10.5281/zenodo.23605715. Check the version and publication date in the Zenodo record before citing a specific release."
+    "text": "Field\nValue\n\n\n\n\nTitle\nVirMarkDB\n\n\nAuthors\nEstoup P, Baudoux A-C, Corre E, Blanc G & Henry N\n\n\nVersion\n0.1.0\n\n\nDate released\n2026-10-26\n\n\nDOI\nhttps://doi.org/10.5281/zenodo.23605715\n\n\nRepository\nhttps://github.com/virmarkdb/VirMarkDB\n\n\nURL\nhttps://virmarkdb.github.io/VirMarkDB/\n\n\nLicense\nCC-BY-4.0\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nSuggested citation\nEstoup P, Baudoux A-C, Corre E, Blanc G & Henry N. VirMarkDB. Zenodo. https://doi.org/10.5281/zenodo.23605715. Check the author list, version and publication date in the Zenodo record before citing a specific release."
   },
   {
     "objectID": "about.html#citation",
     "href": "about.html#citation",
     "title": "About",
     "section": "",
-    "text": "Field\nValue\n\n\n\n\nTitle\nVirMarkDB\n\n\nAuthors\nEstoup P, Baudoux A-C, Corre E, Blanc G, Jackson V & Henry N\n\n\nVersion\n0.1.0\n\n\nDate released\n2026-10-26\n\n\nDOI\nhttps://doi.org/10.5281/zenodo.23605715\n\n\nRepository\nhttps://github.com/Est-oup/VirMarkDB\n\n\nURL\nhttps://est-oup.github.io/VirMarkDB/\n\n\nLicense\nCC-BY-4.0\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nSuggested citation\nEstoup P, Baudoux A-C, Corre E, Blanc G, Jackson V & Henry N. VirMarkDB. Zenodo. https://doi.org/10.5281/zenodo.23605715. Check the version and publication date in the Zenodo record before citing a specific release."
+    "text": "Field\nValue\n\n\n\n\nTitle\nVirMarkDB\n\n\nAuthors\nEstoup P, Baudoux A-C, Corre E, Blanc G & Henry N\n\n\nVersion\n0.1.0\n\n\nDate released\n2026-10-26\n\n\nDOI\nhttps://doi.org/10.5281/zenodo.23605715\n\n\nRepository\nhttps://github.com/virmarkdb/VirMarkDB\n\n\nURL\nhttps://virmarkdb.github.io/VirMarkDB/\n\n\nLicense\nCC-BY-4.0\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nSuggested citation\nEstoup P, Baudoux A-C, Corre E, Blanc G & Henry N. VirMarkDB. Zenodo. https://doi.org/10.5281/zenodo.23605715. Check the author list, version and publication date in the Zenodo record before citing a specific release."
   },
   {
     "objectID": "about.html#license",
@@ -207,7 +207,7 @@
     "href": "about.html#references",
     "title": "About",
     "section": "References",
-    "text": "References\n\nICTV resources\n\nICTV Virus Metadata Resource: VMR_MSL41.v1.20260320\n\n\n\nReference datasets\n\nGuglielmini et al. 2019, Diversification of giant and large eukaryotic dsDNA viruses predating the origin of modern eukaryotes. Associated Zenodo supplementary data were used as one of the reference protein sources."
+    "text": "References\n\nICTV resources\n\nICTV Virus Metadata Resource: VMR_MSL41.v1.20260729\n\n\n\nReference datasets\n\nGuglielmini et al. 2019, Diversification of giant and large eukaryotic dsDNA viruses predating the origin of modern eukaryotes. Associated Zenodo supplementary data were used as one of the reference protein sources."
   },
   {
     "objectID": "about.html#contact",
@@ -228,21 +228,21 @@
     "href": "index.html",
     "title": "VirMarkDB",
     "section": "",
-    "text": "A curated reference database of viral marker-gene sequences for giant viruses, phages and RNA viruses\nVirMarkDB provides protein/nucleotide sequences for ten conserved marker genes across three viral groups: giant viruses (Nucleocytoviricota), phages (Pantevenvirales) and RNA viruses (Orthornavirae), built from ICTV-derived taxonomy.\nExplore the database See the workflow Download"
+    "text": "A curated reference database of viral marker-gene sequences for giant viruses, phages and RNA viruses\nCurrent documented version: v0.1.0 · Release details and availability\nVirMarkDB provides protein/nucleotide sequences for ten conserved marker genes across three viral groups: giant viruses (Nucleocytoviricota), phages (Pantevenvirales) and RNA viruses (Orthornavirae), built from ICTV-derived taxonomy.\nExplore the database See the workflow Download"
   },
   {
     "objectID": "index.html#at-a-glance",
     "href": "index.html#at-a-glance",
     "title": "VirMarkDB",
     "section": "At a glance",
-    "text": "At a glance\n\n\n3\nviral groups\n\n\n10\nmarker genes\n\n\n8,024\ngenomes represented in VirMarkDB"
+    "text": "At a glance\n\n\n3\nviral groups\n\n\n10\nmarker genes\n\n\n8,024\ngenomes"
   },
   {
     "objectID": "index.html#where-to-go-next",
     "href": "index.html#where-to-go-next",
     "title": "VirMarkDB",
     "section": "Where to go next",
-    "text": "Where to go next\n\n\nDatabase\nTaxonomic scope, the ten marker genes, and the marker-group concept.\n\n\nWorkflow\nHow the database is built: ORF prediction, HMM construction, hit selection.\n\n\nFiles & formats\nRelease archive structure.\n\n\nAnalyses\nCoverage statistics and figures for the current release.\n\n\nDownload & Releases\nVersioned archives, checksums, changelog.\n\n\nContribute\nReport issues, add genomes or proteins, correct taxonomy.\n\n\n\nVirMarkDB — viral marker database"
+    "text": "Where to go next\n\n\nDatabase\nTaxonomic scope, the ten marker genes, and the marker-group concept.\n\n\nWorkflow\nHow the database is built: ORF prediction, HMM construction, hit selection.\n\n\nFiles & formats\nRelease archive structure.\n\n\nAnalyses\nCoverage statistics and figures for the current release.\n\n\nDownload & Releases\nVersioned archives, checksums, changelog.\n\n\nContribute\nReport issues, add genomes or proteins, correct taxonomy.\n\n\n\nVirMarkDB - viral marker database - v0.1.0"
   },
   {
     "objectID": "files-formats.html",
@@ -256,7 +256,7 @@
     "href": "files-formats.html#archive-structure",
     "title": "Files & formats",
     "section": "Archive structure",
-    "text": "Archive structure\nVirMarkDB_vX.Y.Z/\n├── markers/\n├── virus_informations/\n├── README.md\n├── CITATION.cff\n├── LICENSE\n└── CHANGELOG.md"
+    "text": "Archive structure\nVirMarkDB_v0.1.0/\n├── markers/\n├── virus_informations/\n├── README.md\n├── CITATION.cff\n├── LICENSE\n└── CHANGELOG.md"
   },
   {
     "objectID": "files-formats.html#markers",
@@ -277,21 +277,21 @@
     "href": "releases.html",
     "title": "Download & Releases",
     "section": "",
-    "text": "Zenodo record\nOpen Zenodo record\nCheck the linked Zenodo record for the available files, version and associated metadata. A complete VirMarkDB data archive is expected to contain marker sequences and accompanying metadata.\n\n\n\n\n\n\nWarning\n\n\n\nA Zenodo DOI has been supplied for VirMarkDB. The specific files and release version associated with it have not been independently verified here."
+    "text": "Zenodo record\nOpen Zenodo record\n\n\n\n\n\n\nWarning\n\n\n\nCheck the linked Zenodo record for the available files, version and associated metadata. A complete VirMarkDB data archive is expected to contain marker sequences and accompanying metadata."
   },
   {
     "objectID": "releases.html#download",
     "href": "releases.html#download",
     "title": "Download & Releases",
     "section": "",
-    "text": "Zenodo record\nOpen Zenodo record\nCheck the linked Zenodo record for the available files, version and associated metadata. A complete VirMarkDB data archive is expected to contain marker sequences and accompanying metadata.\n\n\n\n\n\n\nWarning\n\n\n\nA Zenodo DOI has been supplied for VirMarkDB. The specific files and release version associated with it have not been independently verified here."
+    "text": "Zenodo record\nOpen Zenodo record\n\n\n\n\n\n\nWarning\n\n\n\nCheck the linked Zenodo record for the available files, version and associated metadata. A complete VirMarkDB data archive is expected to contain marker sequences and accompanying metadata."
   },
   {
     "objectID": "releases.html#current-release",
     "href": "releases.html#current-release",
     "title": "Download & Releases",
     "section": "Current release",
-    "text": "Current release\nVersion: see the linked Zenodo record (repository metadata currently indicate v0.1.0).\nDistribution: see the files attached to the linked Zenodo record."
+    "text": "Current release\nDocumented version: v0.1.0 (verify the version and release date against the Zenodo record before citing or downloading).\nDistribution: use the files and version metadata shown on the linked Zenodo record."
   },
   {
     "objectID": "releases.html#archive-contents",
@@ -305,20 +305,13 @@
     "href": "releases.html#checksums",
     "title": "Download & Releases",
     "section": "Checksums",
-    "text": "Checksums\n\n\n\n\n\n\n\nFile\nSHA256\n\n\n\n\nRelease files\nCheck the Zenodo record for checksums; none are verified here"
+    "text": "Checksums\n\n\n\nFile\nSHA256\n\n\n\n\nv0.1.0\nXXX"
   },
   {
     "objectID": "releases.html#changelog",
     "href": "releases.html#changelog",
     "title": "Download & Releases",
     "section": "Changelog",
-    "text": "Changelog\nPrevious releases\n\n\n\nVersion\nDate\nDOI\nNotes\n\n\n\n\n—\n—\n—\nNo previous releases\n\n\n\n\nv0.1.0 - 2026-10-26\nAdded:\n\nInitial release of VirMarkDB.\n\nChanged: none\nFixed: none\nRemoved: none"
-  },
-  {
-    "objectID": "releases.html#versioning-policy",
-    "href": "releases.html#versioning-policy",
-    "title": "Download & Releases",
-    "section": "Versioning policy",
-    "text": "Versioning policy\n\n\n\n\n\n\n\n\nChange type\nVersion increment\nExample\n\n\n\n\nNew marker group or major restructuring\nMajor\nv1.0.0 → v2.0.0\n\n\nAdded genomes, proteins or improved coverage\nMinor\nv1.0.0 → v1.1.0\n\n\nDocumentation or small metadata corrections\nPatch\nv1.0.0 → v1.0.1"
+    "text": "Changelog\nPrevious releases\n\n\n\nVersion\nDate\nDOI\nNotes\n\n\n\n\n—\n—\n—\nNo previous releases\n\n\n\n\nv0.1.0 — documented date: 2026-10-28\n\nInitial documented version covering three viral groups and ten marker genes.\nDatabase-generation workflow, sequence/metadata documentation and descriptive analyses."
   }
 ]

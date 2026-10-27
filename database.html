@@ -192,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="taxonomic-scope" class="level2">
 <h2 class="anchored" data-anchor-id="taxonomic-scope">Taxonomic scope</h2>
-<p>VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource <a href="https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260320.xlsx">VMR_MSL41.v1.20260320</a>.</p>
+<p>VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource <a href="https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260729.xlsx">VMR_MSL41.v1.20260729</a>.</p>
 <p><a href="https://ictv.global/"><img src="assets/ictv_logo.png" class="img-fluid"></a></p>
 <table class="caption-top table">
 <colgroup>
@@ -240,11 +240,11 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>The counts above describe genomes in the current processing manifest and are taken from <code>scope_summary.tsv</code> (not only genomes with a retained marker). Taxonomy from Kingdom to Species is derived from the ICTV VMR. Manually added genomes follow the same taxonomy fields. See <a href="./workflow.html#additional-genome-inputs">Workflow → Additional genome inputs</a> for how these are incorporated.</p>
+<p>The counts above describe genomes with <strong>at least one retained marker</strong> in the final VirMarkDB output. They are read from <code>data/analysis/summary/database_summary.tsv</code>, <strong>not</strong> from the initial genome manifest. The processing manifest includes genomes that may yield no retained marker. Taxonomy from Kingdom to Species is derived from the ICTV VMR; manually added genomes follow the same taxonomy fields. See <a href="./workflow.html#additional-genome-inputs">Workflow → Additional genome inputs</a> for how these are incorporated.</p>
 </section>
 <section id="marker-genes" class="level2">
 <h2 class="anchored" data-anchor-id="marker-genes">Marker genes</h2>
-<p>Ten conserved marker genes are targeted across the three groups.</p>
+<p>Ten marker genes are targeted across the three groups; they are not universal across all viruses.</p>
 <section id="giant-viruses-nucleocytoviricota" class="level3">
 <h3 class="anchored" data-anchor-id="giant-viruses-nucleocytoviricota">Giant viruses (<em>Nucleocytoviricota</em>)</h3>
 <table class="caption-top table">
@@ -327,7 +327,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="why-marker-groups-exist" class="level2">
 <h2 class="anchored" data-anchor-id="why-marker-groups-exist">Why marker groups exist</h2>
-<p>Some marker genes are too divergent across viral lineages to be represented by a single HMM profile. VirMarkDB solves this with <strong>marker groups</strong>: each one ties together a marker gene, a taxonomic scope, a reference protein set, and an associated HMM resource. The Nucleocytoviricota and gp23 profiles are constructed locally, whereas RdRp detection uses the external RdRp-scan profile database. This keeps a common marker-gene framework across the database while letting each lineage be represented by a profile calibrated on its own reference sequences.</p>
+<p>Some marker genes are too divergent across viral lineages to be represented by a single HMM profile. VirMarkDB solves this with <strong>marker groups</strong>: each one ties together a marker gene, a taxonomic scope, a reference protein set, and an associated HMM resource. The Nucleocytoviricota and gp23 profiles are constructed locally, whereas RdRp detection uses the external RdRp-scan profile database. This keeps a common marker-gene framework across the database while allowing scope-specific HMM resources. RdRp-scan profiles are externally sourced rather than calibrated within VirMarkDB.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

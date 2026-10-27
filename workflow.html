@@ -215,7 +215,7 @@ Note
 <h2 class="anchored" data-anchor-id="input-and-provenance">Input and provenance</h2>
 <section id="ictv-resources" class="level3">
 <h3 class="anchored" data-anchor-id="ictv-resources">ICTV resources</h3>
-<p>The initial genome manifest and taxonomy come from the ICTV Virus Metadata Resource <a href="https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260320.xlsx">VMR_MSL41.v1.20260320</a> (released 2026-03-20), providing virus names, ICTV identifiers, full taxonomy, GenBank accessions, genome composition, and host-source metadata.</p>
+<p>The initial genome manifest and taxonomy come from the ICTV Virus Metadata Resource <a href="https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260729.xlsx">VMR_MSL41.v1.20260729</a> (file selected by <code>01_generate_manifest.R</code>; verify the exact source release metadata), providing virus names, ICTV identifiers, full taxonomy, GenBank accessions, genome composition, and host-source metadata.</p>
 </section>
 <section id="additional-genome-inputs" class="level3">
 <h3 class="anchored" data-anchor-id="additional-genome-inputs">Additional genome inputs</h3>
@@ -438,6 +438,7 @@ Show <code>input/mapfile.tsv</code>
 </section>
 <section id="virmarkdb-assessment" class="level2">
 <h2 class="anchored" data-anchor-id="virmarkdb-assessment">VirMarkDB assessment</h2>
+<p>This external-protein assessment identifies candidate diversity potentially missing from VirMarkDB. It does not independently quantify sensitivity, specificity or false-positive rates.</p>
 <p>VirMarkDB is assessed against broader viral protein pools extracted from a local NCBI NR database to identify marker diversity missing or underrepresented in the current release.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
