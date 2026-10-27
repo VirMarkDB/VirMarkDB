@@ -44,9 +44,9 @@ website:
     left: "VirMarkDB - viral marker database - v0.1.0"
     right:
       - icon: github
-        href: https://github.com/virmarkdb/VirMarkDB
+        href: https://github.com/VirMarkDB/VirMarkDB
       - icon: exclamation-circle
-        href: https://github.com/virmarkdb/VirMarkDB/issues
+        href: https://github.com/VirMarkDB/VirMarkDB/issues
       - text: "Zenodo"
         href: https://doi.org/10.5281/zenodo.23605715
 

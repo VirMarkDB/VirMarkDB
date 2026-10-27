@@ -80,6 +80,7 @@ For the eight Nucleocytoviricota markers and gp23, HMM profiles are built from m
 
 **5 · Hit selection**: For each ORF, the best HMM hit is selected based on the highest full-sequence bit score, followed by the lowest E-value. Candidate ORFs are then ranked within each genome and marker group using the same criteria. For RdRp, only the best-ranked ORF is retained, and the envelope (env_from–env_to) of the highest-scoring domain of its selected HMM hit is extracted. For the other markers, the complete ORF is retained, with additional copies included if they satisfy both the score and length ratios specified below. Finally, sequences shorter than 25% of the median extracted protein length for their marker group are excluded. Script: `06_final_results.R`
 
+
 | Filter | Threshold |
 |---|---|
 | Score ratio relative to best hit | ≥ 0.80 |
