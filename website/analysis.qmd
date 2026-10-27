@@ -29,7 +29,6 @@ The genome and taxonomic counts represent the current VirMarkDB database, includ
 | Pantevenvirales | `r database_stat("Pantevenvirales", "genomes")` | `r database_stat("Pantevenvirales", "families")` |
 | Orthornavirae | `r database_stat("Orthornavirae", "genomes")` | `r database_stat("Orthornavirae", "families")` |
 
-*Values are read directly from `database_summary.tsv` when the website is rendered. Regenerate this file after rebuilding VirMarkDB.*
 
 # Marker distribution and sequence characteristics
 
