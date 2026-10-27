@@ -1,0 +1,68 @@
+---
+title: "Database"
+meta-description: "Taxonomic scope, marker genes and the marker-group concept"
+---
+
+```{r}
+#| echo: false
+#| include: false
+source("stats.R")
+```
+
+
+## Taxonomic scope
+
+VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource [VMR_MSL41.v1.20260729](https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260729.xlsx).
+
+[![](assets/ictv_logo.png)](https://ictv.global/)
+
+| Group | Kingdom | Phylum (scope) | Genomes | Families | Marker gene(s) |
+|---|---|---|---|---|---|
+| Giant viruses | Bamfordvirae | Nucleocytoviricota | `r database_stat("Nucleocytoviricota", "genomes")` | `r database_stat("Nucleocytoviricota", "families")` | `atpase`, `dnapol`, `majorcapsid`, `primase`, `rnapol1`, `rnapol2`, `tf2s`, `vltf3` |
+| Phages | Heunggongvirae | Pantevenvirales | `r database_stat("Pantevenvirales", "genomes")` | `r database_stat("Pantevenvirales", "families")` | `g23` |
+| RNA viruses | Orthornavirae | Multiple phyla | `r database_stat("Orthornavirae", "genomes")` | `r database_stat("Orthornavirae", "families")` | `rdrp` |
+
+The counts above describe genomes with **at least one retained marker** in the final VirMarkDB output. Taxonomy from Kingdom to Species is derived from the ICTV VMR; manually added genomes follow the same taxonomy fields. See [Workflow → Additional genome inputs](workflow.qmd#additional-genome-inputs) for how these are incorporated.
+
+## Marker genes
+
+Ten marker genes are targeted across the three groups; they are not universal across all viruses.
+
+### Giant viruses (*Nucleocytoviricota*)
+
+| Marker | Description |
+|---|---|
+| `majorcapsid` | Major capsid protein (MCP) |
+| `dnapol` | DNA polymerase B |
+| `atpase` | Packaging ATPase |
+| `primase` | Primase |
+| `rnapol1` | RNA polymerase subunit 1 |
+| `rnapol2` | RNA polymerase subunit 2 |
+| `tf2s` | Transcription factor S-II / TFIIS-like |
+| `vltf3` | Viral late transcription factor 3 |
+
+### Phages (*Pantevenvirales*)
+
+| Marker | Description |
+|---|---|
+| `g23` | Major capsid protein gp23 |
+
+### RNA viruses (*Orthornavirae*)
+
+| Marker | Description |
+|---|---|
+| `rdrp` | RNA-dependent RNA polymerase |
+
+## Why marker groups exist
+
+Some marker genes are too divergent across viral lineages to be represented by a single HMM profile. VirMarkDB solves this with **marker groups**: each one ties together a marker gene, a taxonomic scope, a reference protein set, and an associated HMM resource. The Nucleocytoviricota and gp23 profiles are constructed locally, whereas RdRp detection uses the external RdRp-scan profile database. This keeps a common marker-gene framework across the database while allowing scope-specific HMM resources. RdRp-scan profiles are externally sourced rather than calibrated within VirMarkDB.
+
+::: {.callout-note}
+This page describes the *concept*. The mechanics (how `mapfile.tsv` encodes marker groups and drives the pipeline) are covered once, in [Workflow → Marker-group configuration](workflow.qmd#marker-group-configuration).
+:::
+
+## Where the data lives
+
+Released sequences, metadata tables, and per-ORF tables are distributed as a versioned archive. For the exact directory layout, FASTA header syntax, and TSV column definitions, see [Files & formats](files-formats.qmd).
+
+For genome and marker coverage numbers, see [Analyses](analysis.qmd).

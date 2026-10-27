@@ -1,0 +1,19 @@
+input/ncbi.creds
+input/ncbi_taxonomy
+output
+*out
+*.json
+.gitignore
+
+# Quarto website
+website/_site/
+website/.quarto/
+
+# Quarto temporary files
+website/*.knit.md
+website/*.utf8.md
+
+# R temporary files
+.Rhistory
+.RData
+.Rproj.user/

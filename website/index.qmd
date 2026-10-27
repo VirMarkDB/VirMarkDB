@@ -1,0 +1,87 @@
+---
+title: "VirMarkDB"
+meta-description: "Reference database of viral marker-gene sequences"
+page-layout: full
+---
+
+```{r}
+#| echo: false
+#| include: false
+source("stats.R")
+```
+
+
+::: {.hero-banner}
+
+![](assets/logo_virmark.png){fig-align="center" width=400px}
+
+**A curated reference database of viral marker-gene sequences for giant viruses, phages and RNA viruses**
+
+**Current documented version: v0.1.0** · [Release details and availability](releases.qmd)
+
+VirMarkDB provides protein/nucleotide sequences for ten conserved marker genes across three viral groups: giant viruses (*Nucleocytoviricota*), phages (*Pantevenvirales*) and RNA viruses (*Orthornavirae*), built from ICTV-derived taxonomy.
+
+[Explore the database](database.qmd){.btn-action} [See the workflow](workflow.qmd){.btn-action} [Download](releases.qmd){.btn-action}
+
+:::
+
+## At a glance
+
+::: {.snapshot-grid}
+
+::: {.snapshot-card}
+### `r stat("Viral groups")`
+viral groups
+:::
+
+::: {.snapshot-card}
+### `r stat("Marker genes")`
+marker genes
+:::
+
+::: {.snapshot-card}
+### `r stat("Genomes")`
+genomes
+:::
+
+:::
+
+## Where to go next
+
+::: {.nav-grid}
+
+::: {.nav-card}
+### [Database](database.qmd)
+Taxonomic scope, the ten marker genes, and the marker-group concept.
+:::
+
+::: {.nav-card}
+### [Workflow](workflow.qmd)
+How the database is built: ORF prediction, HMM construction, hit selection.
+:::
+
+::: {.nav-card}
+### [Files & formats](files-formats.qmd)
+Release archive structure.
+:::
+
+::: {.nav-card}
+### [Analyses](analysis.qmd)
+Coverage statistics and figures for the current release.
+:::
+
+::: {.nav-card}
+### [Download & Releases](releases.qmd)
+Versioned archives, checksums, changelog.
+:::
+
+::: {.nav-card}
+### [Contribute](contribute.qmd)
+Report issues, add genomes or proteins, correct taxonomy.
+:::
+
+:::
+
+---
+
+*VirMarkDB - viral marker database - v0.1.0*

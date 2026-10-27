@@ -1,0 +1,30 @@
+cff-version: 1.0.0
+title: "VirMarkDB"
+message: "If you use VirMarkDB, please cite it using the metadata from this file."
+type: dataset
+authors:
+  - given-names: "Paul"
+    family-names: "Estoup"
+  - given-names: "Anne-Claire"
+    family-names: "Baudoux"
+  - given-names: "Erwan"
+    family-names: "Corre"
+  - given-names: "Guillaume"
+    family-names: "Blanc"
+  - given-names: "Nicolas"
+    family-names: "Henry"
+
+repository-code: "https://github.com/VirMarkDB/VirMarkDB"
+url: "https://virmarkdb.github.io/VirMarkDB/"
+abstract: "VirMarkDB: a reference database of viral marker-gene sequences."
+
+keywords:
+  - viruses
+  - Nucleocytoviricota
+  - Pantevenvirales
+  - Orthornavirae
+  - viral markers
+  
+license: "CC-BY-4.0"
+version: "0.1.0"
+date-released: "2026-10-28"

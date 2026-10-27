@@ -1,0 +1,67 @@
+
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "VirMarkDB"
+  description: "Reference database of viral marker-gene sequences"
+  site-url: "https://virmarkdb.github.io/VirMarkDB/"
+  repo-url: "https://github.com/virmarkdb/VirMarkDB"
+  repo-actions: [issue, source]
+  favicon: assets/logo_virmark_blank.png
+  image: assets/logo_virmark_blank.png
+
+  navbar:
+    logo: assets/logo_virmark_blank.png
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Database"
+        href: database.qmd
+      - text: "Workflow"
+        href: workflow.qmd
+      - text: "Files & formats"
+        href: files-formats.qmd
+      - text: "Analyses"
+        href: analysis.qmd
+      - text: "Download & Releases"
+        href: releases.qmd
+      - text: "Contribute"
+        href: contribute.qmd
+      - text: "About"
+        href: about.qmd
+    right:
+      - icon: github
+        href: https://github.com/virmarkdb/VirMarkDB
+      - icon: exclamation-circle
+        href: https://github.com/virmarkdb/VirMarkDB/issues
+        text: "Issues"
+      - text: "Zenodo"
+        href: https://doi.org/10.5281/zenodo.23712240
+
+  page-footer:
+    left: "VirMarkDB - viral marker database - v0.1.0"
+    right:
+      - icon: github
+        href: https://github.com/VirMarkDB/VirMarkDB
+      - icon: exclamation-circle
+        href: https://github.com/VirMarkDB/VirMarkDB/issues
+      - text: "Zenodo"
+        href: https://doi.org/10.5281/zenodo.23712240
+
+  back-to-top-navigation: true
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    page-layout: article
+    grid:
+      sidebar-width: 250px
+      body-width: 900px
+      margin-width: 250px
+
+# index.qmd overrides page-layout to "full" in its own front matter
+# so the hero/grid sections can use the whole width without a TOC sidebar.

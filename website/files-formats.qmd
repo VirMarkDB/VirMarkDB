@@ -1,0 +1,74 @@
+---
+title: "Files & formats"
+meta-description: "Release archive structure, FASTA headers, TSV columns and tool-specific exports"
+---
+
+This page is the single reference for the structure and contents of a VirMarkDB release archive. For download links, see [Releases](releases.qmd).
+
+## Archive structure
+
+```
+VirMarkDB_v0.1.0/
+├── markers/
+├── virus_informations/
+├── README.md
+├── CITATION.cff
+├── LICENSE
+└── CHANGELOG.md
+```
+
+## Markers
+
+Organised by taxonomic group and marker: `markers/<group_id>/<marker>/`
+
+| File | Description |
+|---|---|
+| `<marker_group_id>_protein.fasta` | Retained marker protein sequences (the selected HMM domain envelope for RdRp; otherwise the retained ORF) |
+| `<marker_group_id>_nucleotide.fasta` | Corresponding nucleotide sequences of the retained marker regions |
+| `<marker_group_id>_virus_orf_description.tsv` | Per-ORF table with HMM hit metrics and virus metadata |
+
+### Protein FASTA header
+
+```
+>orf_name marker Kingdom;Phylum;Class;Order;Family;Genus;Species
+```
+
+### ORF annotation file
+
+The ORF annotation file contains the final selected viral marker-gene sequences retained in VirMarkDB. Each row corresponds to one detected marker ORF associated with a viral genome.
+
+| Column | Description |
+|---|---|
+| `orf_name` | Identifier of the retained ORF sequence |
+| `virus_id` | Unique identifier of the viral genome/accession |
+| `group_id` | Lowercase marker scope identifier (e.g. `nucleocytoviricota`, `orthornavirae`, `pantevenvirales`) |
+| `marker` | Marker-gene identifier |
+| `evalue` | Full-sequence HMMER E-value for the selected hit |
+| `score` | Full-sequence HMMER bit score for the selected hit |
+| `ORF_length_aa` | Length of the original predicted ORF in amino acids |
+| `marker_length_AA` | Length of the exported marker protein sequence in amino acids |
+| `marker_length_NT` | Length of the exported marker nucleotide sequence in nucleotides |
+| `position_start` | Predicted ORF start coordinate on the source nucleotide sequence (Prodigal) |
+| `position_end` | Predicted ORF end coordinate on the source nucleotide sequence (Prodigal) |
+| `ali_from` | Start position of the HMMER alignment on the original predicted ORF |
+| `ali_to` | End position of the HMMER alignment on the original predicted ORF |
+| `env_from` | Start of the selected HMMER domain envelope on the original predicted ORF |
+| `env_to` | End of the selected HMMER domain envelope on the original predicted ORF |
+| `Species` | Viral species associated with the genome |
+| `Virus_names` | Virus name(s) associated with the genome |
+
+
+::: {.callout-note}
+For RdRp, `ali_from`, `ali_to`, `env_from` and `env_to` refer to the original ORF, while the exported FASTA contains only the selected domain envelope. The exported protein therefore begins at position 1 of that extracted region.
+:::
+
+## Virus informations
+
+| File | Description |
+|---|---|
+| `virus_compo_taxo.tsv` | Wide-format table: one row per genome with at least one retained marker; marker columns store ORF identifiers |
+| `virus_metadata.tsv` | Genome-level metadata for genomes with retained markers: identifiers, virus names, host source, taxonomy |
+
+::: {.callout-note}
+For the conceptual definition of a marker group, see [Database](database.qmd#why-marker-groups-exist). For how `mapfile.tsv` drives the pipeline, see [Workflow](workflow.qmd#marker-group-configuration).
+:::

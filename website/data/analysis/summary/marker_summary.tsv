@@ -1,0 +1,11 @@
+marker_id	marker	scope	genomes_in_scope	genomes_with_marker	recovery	sequences	sequences_fasta	multicopy_genomes	median_length_aa	median_hmm_score
+atpase_nucleocytoviricota	Packaging ATPase	Nucleocytoviricota	252	198	78.57142857142857	199	199	1	277	310.7
+dnapol_nucleocytoviricota	DNA polymerase	Nucleocytoviricota	252	213	84.52380952380952	213	213	0	1013	878.5
+majorcapsid_nucleocytoviricota	Major capsid protein	Nucleocytoviricota	252	178	70.63492063492063	221	221	38	479	442
+primase_nucleocytoviricota	Primase	Nucleocytoviricota	252	210	83.33333333333334	216	216	2	884	690.5
+rnapol1_nucleocytoviricota	RNA polymerase subunit 1	Nucleocytoviricota	252	181	71.82539682539682	184	184	3	1287	1031.25
+rnapol2_nucleocytoviricota	RNA polymerase subunit 2	Nucleocytoviricota	252	182	72.22222222222221	185	185	3	1161	1161.5
+tf2s_nucleocytoviricota	TFIIS	Nucleocytoviricota	252	195	77.38095238095238	195	195	0	180	88.1
+vltf3_nucleocytoviricota	VLTF3	Nucleocytoviricota	252	162	64.28571428571429	163	163	1	361	265.2
+g23_pantevenvirales	gp23	Pantevenvirales	361	360	99.7229916897507	360	360	0	519	617.6500000000001
+rdrp_orthornavirae	RdRp	Orthornavirae	11793	7817	66.28508437208514	7817	7817	0	607	425.7

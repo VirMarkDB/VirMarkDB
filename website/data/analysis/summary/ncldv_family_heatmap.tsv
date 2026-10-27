@@ -1,0 +1,121 @@
+Family	marker	genomes	detected	recovery
+Allomimiviridae	DNA polymerase	5	5	100
+Allomimiviridae	Major capsid protein	5	3	60
+Allomimiviridae	Packaging ATPase	5	4	80
+Allomimiviridae	Primase	5	5	100
+Allomimiviridae	RNA polymerase subunit 1	5	4	80
+Allomimiviridae	RNA polymerase subunit 2	5	5	100
+Allomimiviridae	TFIIS	5	4	80
+Allomimiviridae	VLTF3	5	5	100
+Ascoviridae	DNA polymerase	7	5	71.42857142857143
+Ascoviridae	Major capsid protein	7	6	85.71428571428571
+Ascoviridae	Packaging ATPase	7	5	71.42857142857143
+Ascoviridae	Primase	7	5	71.42857142857143
+Ascoviridae	RNA polymerase subunit 1	7	5	71.42857142857143
+Ascoviridae	RNA polymerase subunit 2	7	5	71.42857142857143
+Ascoviridae	TFIIS	7	5	71.42857142857143
+Ascoviridae	VLTF3	7	5	71.42857142857143
+Asfarviridae	DNA polymerase	20	20	100
+Asfarviridae	Major capsid protein	20	20	100
+Asfarviridae	Packaging ATPase	20	20	100
+Asfarviridae	Primase	20	20	100
+Asfarviridae	RNA polymerase subunit 1	20	20	100
+Asfarviridae	RNA polymerase subunit 2	20	20	100
+Asfarviridae	TFIIS	20	20	100
+Asfarviridae	VLTF3	20	20	100
+Hydriviridae	DNA polymerase	1	1	100
+Hydriviridae	Major capsid protein	1	1	100
+Hydriviridae	Packaging ATPase	1	0	0
+Hydriviridae	Primase	1	1	100
+Hydriviridae	RNA polymerase subunit 1	1	1	100
+Hydriviridae	RNA polymerase subunit 2	1	1	100
+Hydriviridae	TFIIS	1	1	100
+Hydriviridae	VLTF3	1	1	100
+Iridoviridae	DNA polymerase	55	52	94.54545454545455
+Iridoviridae	Major capsid protein	55	55	100
+Iridoviridae	Packaging ATPase	55	52	94.54545454545455
+Iridoviridae	Primase	55	52	94.54545454545455
+Iridoviridae	RNA polymerase subunit 1	55	52	94.54545454545455
+Iridoviridae	RNA polymerase subunit 2	55	52	94.54545454545455
+Iridoviridae	TFIIS	55	47	85.45454545454545
+Iridoviridae	VLTF3	55	52	94.54545454545455
+Mamonoviridae	DNA polymerase	2	2	100
+Mamonoviridae	Major capsid protein	2	2	100
+Mamonoviridae	Packaging ATPase	2	2	100
+Mamonoviridae	Primase	2	2	100
+Mamonoviridae	RNA polymerase subunit 1	2	0	0
+Mamonoviridae	RNA polymerase subunit 2	2	0	0
+Mamonoviridae	TFIIS	2	2	100
+Mamonoviridae	VLTF3	2	2	100
+Marseilleviridae	DNA polymerase	9	4	44.44444444444444
+Marseilleviridae	Major capsid protein	9	4	44.44444444444444
+Marseilleviridae	Packaging ATPase	9	4	44.44444444444444
+Marseilleviridae	Primase	9	4	44.44444444444444
+Marseilleviridae	RNA polymerase subunit 1	9	3	33.333333333333336
+Marseilleviridae	RNA polymerase subunit 2	9	3	33.333333333333336
+Marseilleviridae	TFIIS	9	4	44.44444444444444
+Marseilleviridae	VLTF3	9	4	44.44444444444444
+Mesomimiviridae	DNA polymerase	6	6	100
+Mesomimiviridae	Major capsid protein	6	6	100
+Mesomimiviridae	Packaging ATPase	6	6	100
+Mesomimiviridae	Primase	6	6	100
+Mesomimiviridae	RNA polymerase subunit 1	6	6	100
+Mesomimiviridae	RNA polymerase subunit 2	6	6	100
+Mesomimiviridae	TFIIS	6	6	100
+Mesomimiviridae	VLTF3	6	6	100
+Mimiviridae	DNA polymerase	20	20	100
+Mimiviridae	Major capsid protein	20	20	100
+Mimiviridae	Packaging ATPase	20	20	100
+Mimiviridae	Primase	20	20	100
+Mimiviridae	RNA polymerase subunit 1	20	20	100
+Mimiviridae	RNA polymerase subunit 2	20	20	100
+Mimiviridae	TFIIS	20	20	100
+Mimiviridae	VLTF3	20	20	100
+Orpheoviridae	DNA polymerase	1	1	100
+Orpheoviridae	Major capsid protein	1	1	100
+Orpheoviridae	Packaging ATPase	1	0	0
+Orpheoviridae	Primase	1	1	100
+Orpheoviridae	RNA polymerase subunit 1	1	1	100
+Orpheoviridae	RNA polymerase subunit 2	1	1	100
+Orpheoviridae	TFIIS	1	1	100
+Orpheoviridae	VLTF3	1	1	100
+Phycodnaviridae	DNA polymerase	47	29	61.702127659574465
+Phycodnaviridae	Major capsid protein	47	29	61.702127659574465
+Phycodnaviridae	Packaging ATPase	47	29	61.702127659574465
+Phycodnaviridae	Primase	47	30	63.829787234042556
+Phycodnaviridae	RNA polymerase subunit 1	47	1	2.127659574468085
+Phycodnaviridae	RNA polymerase subunit 2	47	1	2.127659574468085
+Phycodnaviridae	TFIIS	47	26	55.319148936170215
+Phycodnaviridae	VLTF3	47	29	61.702127659574465
+Pithoviridae	DNA polymerase	15	13	86.66666666666667
+Pithoviridae	Major capsid protein	15	13	86.66666666666667
+Pithoviridae	Packaging ATPase	15	0	0
+Pithoviridae	Primase	15	13	86.66666666666667
+Pithoviridae	RNA polymerase subunit 1	15	13	86.66666666666667
+Pithoviridae	RNA polymerase subunit 2	15	13	86.66666666666667
+Pithoviridae	TFIIS	15	13	86.66666666666667
+Pithoviridae	VLTF3	15	13	86.66666666666667
+Poxviridae	DNA polymerase	60	53	88.33333333333333
+Poxviridae	Major capsid protein	60	14	23.333333333333332
+Poxviridae	Packaging ATPase	60	52	86.66666666666667
+Poxviridae	Primase	60	49	81.66666666666667
+Poxviridae	RNA polymerase subunit 1	60	53	88.33333333333333
+Poxviridae	RNA polymerase subunit 2	60	53	88.33333333333333
+Poxviridae	TFIIS	60	44	73.33333333333333
+Poxviridae	VLTF3	60	2	3.3333333333333335
+Schizomimiviridae	DNA polymerase	2	2	100
+Schizomimiviridae	Major capsid protein	2	2	100
+Schizomimiviridae	Packaging ATPase	2	2	100
+Schizomimiviridae	Primase	2	2	100
+Schizomimiviridae	RNA polymerase subunit 1	2	2	100
+Schizomimiviridae	RNA polymerase subunit 2	2	2	100
+Schizomimiviridae	TFIIS	2	2	100
+Schizomimiviridae	VLTF3	2	2	100
+Yaraviridae	DNA polymerase	2	0	0
+Yaraviridae	Major capsid protein	2	2	100
+Yaraviridae	Packaging ATPase	2	2	100
+Yaraviridae	Primase	2	0	0
+Yaraviridae	RNA polymerase subunit 1	2	0	0
+Yaraviridae	RNA polymerase subunit 2	2	0	0
+Yaraviridae	TFIIS	2	0	0
+Yaraviridae	VLTF3	2	0	0
