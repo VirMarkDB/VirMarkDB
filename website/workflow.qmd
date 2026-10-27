@@ -15,7 +15,7 @@ The workflow is organized by taxonomic scope using `mapfile.tsv`. The Nucleocyto
 
 ### ICTV resources
 
-The initial genome manifest and taxonomy come from the ICTV Virus Metadata Resource [VMR_MSL41.v1.20260320](https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260320.xlsx) (released 2026-03-20), providing virus names, ICTV identifiers, full taxonomy, GenBank accessions, genome composition, and host-source metadata.
+The initial genome manifest and taxonomy come from the ICTV Virus Metadata Resource [VMR_MSL41.v1.20260729](https://ictv.global/sites/default/files/VMR/VMR_MSL41.v1.20260729.xlsx) (file selected by `01_generate_manifest.R`; verify the exact source release metadata), providing virus names, ICTV identifiers, full taxonomy, GenBank accessions, genome composition, and host-source metadata.
 
 ### Additional genome inputs
 
@@ -89,6 +89,8 @@ For the eight Nucleocytoviricota markers and gp23, HMM profiles are built from m
 :::
 
 ## VirMarkDB assessment
+
+This external-protein assessment identifies candidate diversity potentially missing from VirMarkDB. It does not independently quantify sensitivity, specificity or false-positive rates.
 
 VirMarkDB is assessed against broader viral protein pools extracted from a local NCBI NR database to identify marker diversity missing or underrepresented in the current release.
 

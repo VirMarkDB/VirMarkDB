@@ -39,7 +39,7 @@ Public release archives will be deposited on Zenodo.
 
 Citation metadata are provided in [`CITATION.cff`](CITATION.cff).
 
-Estoup P, Henry N, Corre E, Baudoux A-C. 2026. *VirMarkDB: a reference database of viral marker-gene sequences*. Version 0.1.0. Zenodo. https://doi.org/10.5281/zenodo.23605715 
+Estoup P, Baudoux A-C, Corre E, Blanc G & Henry N. 2026. *VirMarkDB: a reference database of viral marker-gene sequences*. Version 0.1.0. Zenodo. https://doi.org/10.5281/zenodo.23605715 
 
 ## License
 
@@ -49,4 +49,4 @@ VirMarkDB is distributed under the CC-BY-4.0 license. See [`LICENSE`](LICENSE).
 
 For questions, corrections, missing taxa, suspicious marker assignments or reproducibility issues, please use the GitHub issue tracker:
 
-[https://github.com/virmarkdb/VirMarkDB/issues](https://github.com/virmarkdb/VirMarkDB/issues)
+[https://github.com/VirMarkDB/VirMarkDB/issues](https://github.com/VirMarkDB/VirMarkDB/issues)

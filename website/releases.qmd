@@ -9,18 +9,15 @@ meta-description: "Download VirMarkDB, checksums, changelog and versioning polic
 
 [Open Zenodo record](https://doi.org/10.5281/zenodo.23605715){.btn-action }
 
-
-Check the linked Zenodo record for the available files, version and associated metadata. A complete VirMarkDB data archive is expected to contain marker sequences and accompanying metadata.
-
 ::: {.callout-warning}
-A Zenodo DOI has been supplied for VirMarkDB. The specific files and release version associated with it have not been independently verified here.
+Check the linked Zenodo record for the available files, version and associated metadata. A complete VirMarkDB data archive is expected to contain marker sequences and accompanying metadata.
 :::
 
 ## Current release
 
-**Version:** see the linked Zenodo record (repository metadata currently indicate v0.1.0).
+**Documented version:** `v0.1.0` (verify the version and release date against the Zenodo record before citing or downloading).
 
-**Distribution:** see the files attached to the linked Zenodo record.
+**Distribution:** use the files and version metadata shown on the linked Zenodo record.
 
 ## Archive contents
 
@@ -30,7 +27,7 @@ For a description of every file and folder in the release archive, see [Files & 
 
 | File | SHA256 |
 |---|---|
-| v0.1.0 | Check the Zenodo record for checksums; none are verified here |
+| v0.1.0 | XXX |
 
 ## Changelog
 
@@ -40,14 +37,7 @@ For a description of every file and folder in the release archive, see [Files & 
 |---|---|---|---|
 | — | — | — | No previous releases |
 
-### v0.1.0 - 2026-10-28
+### v0.1.0 — documented date: 2026-10-28
 
-**Added:**
-
-- Initial release of VirMarkDB.
-
-**Changed:** none
-
-**Fixed:** none
-
-**Removed:** none
+- Initial documented version covering three viral groups and ten marker genes.
+- Database-generation workflow, sequence/metadata documentation and descriptive analyses.

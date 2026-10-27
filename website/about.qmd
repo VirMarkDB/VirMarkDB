@@ -7,24 +7,24 @@ meta-description: "Citation, license, references, contact and known limitations"
 
 | Field | Value |
 |---|---|
-| Title | VirMarkDB: a reference database of viral marker-gene sequences |
-| Authors | Estoup P, Baudoux A-C, Corre E, Blanc G, Jackson V & Henry N |
+| Title | VirMarkDB |
+| Authors | Estoup P, Baudoux A-C, Corre E, Blanc G & Henry N |
 | Version | 0.1.0 |
-| Date released | 2026-10-28 |
+| Date released | 2026-10-26 |
 | DOI | [https://doi.org/10.5281/zenodo.23605715](https://doi.org/10.5281/zenodo.23605715) |
-| Repository | <https://github.com/VirMarkDB/VirMarkDB/> |
+| Repository | <https://github.com/virmarkdb/VirMarkDB> |
 | URL | <https://virmarkdb.github.io/VirMarkDB/> |
 | License | CC-BY-4.0 |
 
 ::: {.callout-note}
 **Suggested citation**
 
-Estoup P, Baudoux A-C, Corre E, Blanc G, Jackson V & Henry N. VirMarkDB. Zenodo. [https://doi.org/10.5281/zenodo.23605715](https://doi.org/10.5281/zenodo.23605715). Check the version and publication date in the Zenodo record before citing a specific release.
+Estoup P, Baudoux A-C, Corre E, Blanc G & Henry N. VirMarkDB. Zenodo. [https://doi.org/10.5281/zenodo.23605715](https://doi.org/10.5281/zenodo.23605715). Check the author list, version and publication date in the Zenodo record before citing a specific release.
 :::
 
 ## License
 
-VirMarkDB is distributed under the CC-BY-4.0 license, view it here: [LICENSE](https://github.com/Est-oup/VirMarkDB/blob/dev/LICENSE).
+VirMarkDB is distributed under the CC-BY-4.0 license, view it here: [LICENSE](https://github.com/virmarkdb/VirMarkDB/blob/dev/LICENSE).
 
 ## References
 
@@ -38,7 +38,7 @@ VirMarkDB is distributed under the CC-BY-4.0 license, view it here: [LICENSE](ht
 
 ## Contact
 
-Use the GitHub issue tracker for questions, corrections, missing taxa, suspicious marker assignments, and reproducibility problems: [Open an issue](https://github.com/Est-oup/VirMarkDB/issues).
+Use the GitHub issue tracker for questions, corrections, missing taxa, suspicious marker assignments, and reproducibility problems: [Open an issue](https://github.com/VirMarkDB/VirMarkDB/issues).
 
 ## Notes and limitations
 

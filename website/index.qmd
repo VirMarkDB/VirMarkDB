@@ -17,6 +17,8 @@ source("stats.R")
 
 **A curated reference database of viral marker-gene sequences for giant viruses, phages and RNA viruses**
 
+**Current documented version: v0.1.0** · [Release details and availability](releases.qmd)
+
 VirMarkDB provides protein/nucleotide sequences for ten conserved marker genes across three viral groups: giant viruses (*Nucleocytoviricota*), phages (*Pantevenvirales*) and RNA viruses (*Orthornavirae*), built from ICTV-derived taxonomy.
 
 [Explore the database](database.qmd){.btn-action} [See the workflow](workflow.qmd){.btn-action} [Download](releases.qmd){.btn-action}
@@ -39,7 +41,7 @@ marker genes
 
 ::: {.snapshot-card}
 ### `r stat("Genomes")`
-genomes represented in VirMarkDB
+genomes
 :::
 
 :::

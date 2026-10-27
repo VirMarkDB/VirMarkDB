@@ -9,7 +9,7 @@ meta-description: "Coverage statistics and figures for the current VirMarkDB rel
 source("stats.R")
 ```
 
-This page summarizes the taxonomic coverage, marker distribution and reference sequence composition of the current VirMarkDB release.
+This page summarizes taxonomic representation, marker detection and characteristics of retained sequences in the current VirMarkDB output. These descriptive statistics are not an independent sensitivity/specificity benchmark.
 
 VirMarkDB currently integrates curated marker-gene references from three viral groups with distinct marker strategies:
 
@@ -35,6 +35,8 @@ The genome and taxonomic counts represent the current VirMarkDB database, includ
 
 ## Marker recovery across genomes
 
+Recovery is the percentage of processed genomes in each marker scope with at least one retained marker sequence. It is influenced by genome completeness and the detection/filtering settings.
+
 ![](data/analysis/figures/Figure2A_marker_recovery.png)
 
 ## Marker-positive genomes and retained sequences
@@ -47,6 +49,8 @@ The genome and taxonomic counts represent the current VirMarkDB database, includ
 
 ## Multiple marker copies
 
+Counts refer to genomes with more than one retained sequence for a given marker; RdRp retains only the highest-ranked ORF per genome.
+
 ![](data/analysis/figures/Figure2D_multicopy_genomes.png)
 
 ## Taxonomic representation
@@ -55,7 +59,9 @@ The genome and taxonomic counts represent the current VirMarkDB database, includ
 
 ## HMM hit scores
 
-![](data/analysis/figures/FigureS1_HMM_scores.png)
+::: {.callout-important}
+Figure S1 is temporarily withheld pending regeneration: the exported HMM-score table must retain the correct marker identifier for each hit. Run the corrected `scripts/assessment/13_summary_satistics.R` and verify `marker_hmm_scores.tsv` before restoring the figure.
+:::
 
 The full-sequence bit scores describe retained HMMER matches; they should not be interpreted as a direct comparison of marker quality across HMM profiles.
 
@@ -63,9 +69,11 @@ The full-sequence bit scores describe retained HMMER matches; they should not be
 
 ## Nucleocytoviricota
 
-*Nucleocytoviricota* genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance. The figure below shows marker recovery across the represented viral families.
+*Nucleocytoviricota* genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance. Family-level recovery is defined as the number of genomes with a retained marker divided by the number of genomes assessed in that family.
 
-![](data/analysis/figures/FigureS2_ncldv_family_heatmap.png)
+::: {.callout-important}
+Figure S2 is temporarily withheld pending regeneration: the family-level recovery percentages in the previous export were incorrect. Run the corrected `scripts/assessment/13_summary_satistics.R` and confirm every recovery value lies between 0 and 100% before restoring the heatmap.
+:::
 
 ## Pantevenvirales
 
