@@ -16,7 +16,7 @@ authors:
 
 repository-code: "https://github.com/VirMarkDB/VirMarkDB"
 url: "https://virmarkdb.github.io/VirMarkDB/"
-abstract: "VirMarkDB: a reference database of viral marker-gene sequences"
+abstract: "VirMarkDB: a reference database of viral marker-gene sequences."
 
 keywords:
   - viruses

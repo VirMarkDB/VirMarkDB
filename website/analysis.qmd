@@ -59,9 +59,7 @@ Counts refer to genomes with more than one retained sequence for a given marker;
 
 ## HMM hit scores
 
-::: {.callout-important}
-Figure S1 is temporarily withheld pending regeneration: the exported HMM-score table must retain the correct marker identifier for each hit. Run the corrected `scripts/assessment/13_summary_satistics.R` and verify `marker_hmm_scores.tsv` before restoring the figure.
-:::
+![](data/analysis/figures/FigureS1_HMM_scores.png)
 
 The full-sequence bit scores describe retained HMMER matches; they should not be interpreted as a direct comparison of marker quality across HMM profiles.
 
@@ -71,9 +69,7 @@ The full-sequence bit scores describe retained HMMER matches; they should not be
 
 *Nucleocytoviricota* genomes are represented using eight conserved marker genes selected for their phylogenetic and taxonomic relevance. Family-level recovery is defined as the number of genomes with a retained marker divided by the number of genomes assessed in that family.
 
-::: {.callout-important}
-Figure S2 is temporarily withheld pending regeneration: the family-level recovery percentages in the previous export were incorrect. Run the corrected `scripts/assessment/13_summary_satistics.R` and confirm every recovery value lies between 0 and 100% before restoring the heatmap.
-:::
+![](data/analysis/figures/FigureS2_ncldv_family_heatmap.png)
 
 ## Pantevenvirales
 

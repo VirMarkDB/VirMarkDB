@@ -7,7 +7,7 @@ Contributions to VirMarkDB are welcome through GitHub issues and pull requests, 
 
 ## Issue tracker
 
-Open an [issue](https://github.com/virmarkdb/VirMarkDB/issues) for:
+Open an [issue](https://github.com/VirMarkDB/VirMarkDB/issues) for:
 
 - suspicious or incorrect marker assignments
 - missing taxa or poorly represented lineages
