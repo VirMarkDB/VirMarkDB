@@ -106,7 +106,7 @@ for(i in seq_len(nrow(markers))){
     median_length_aa = median(BiocGenerics::width(aa)), median_hmm_score = median(desc$score, na.rm = TRUE)))
 
   length_data <- bind_rows(length_data, tibble(marker = marker, scope = group, protein_length = BiocGenerics::width(aa)))
-  score_data <- bind_rows(score_data, desc %>% transmute(marker = marker, scope = group, orf_name,
+  score_data <- bind_rows(score_data, desc %>% transmute(marker = .env$marker, scope = .env$group, orf_name,
                                                         score = as.numeric(score), evalue = as.numeric(evalue)))
 
   positives <- sub[copies > 0, ]
@@ -126,6 +126,7 @@ taxo_data$marker <- factor(taxo_data$marker, levels = markers$marker)
 
 write_tsv(marker_summary, file.path(summary_dir, "marker_summary.tsv"))
 write_tsv(taxo_data, file.path(summary_dir, "marker_taxonomic_diversity.tsv"))
+if (anyNA(score_data$marker)) stop("Missing marker names in HMM score data")
 write_tsv(score_data, file.path(summary_dir, "marker_hmm_scores.tsv"))
 
 # Figure 2A - Marker recovery
@@ -184,7 +185,8 @@ ncldv_heat <- data %>% filter(scope == "Nucleocytoviricota", !is.na(Family), Fam
   pivot_longer(-Family, names_to = "orf_col", values_to = "orf") %>%
   mutate(marker = markers$marker[match(orf_col, markers$orf_col)], detected = count_marker(orf) > 0) %>%
   group_by(Family, marker) %>%
-  summarise(genomes = n(), detected = sum(detected), recovery = 100 * mean(detected), .groups = "drop")
+  summarise(genomes = n(), detected = sum(detected), recovery = 100 * detected / genomes, .groups = "drop")
+stopifnot(all(ncldv_heat$recovery >= 0 & ncldv_heat$recovery <= 100))
 write_tsv(ncldv_heat, file.path(summary_dir, "ncldv_family_heatmap.tsv"))
 
 family_stats <- ncldv_heat %>% group_by(Family) %>%
