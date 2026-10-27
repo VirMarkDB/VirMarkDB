@@ -25,9 +25,9 @@ For a description of every file and folder in the release archive, see [Files & 
 
 ## Checksums
 
-| File | SHA256 |
+| File | MD5sum |
 |---|---|
-| v0.1.0 | XXX |
+| VirMarkDB-v0.1.0.zip | 60810b6b99bec59ea798d850f339065e |
 
 ## Changelog
 
