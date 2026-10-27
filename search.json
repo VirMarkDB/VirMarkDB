@@ -151,14 +151,14 @@
     "href": "database.html",
     "title": "Database",
     "section": "",
-    "text": "VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource VMR_MSL41.v1.20260729.\n\n\n\n\n\n\n\n\n\n\n\n\nGroup\nKingdom\nPhylum (scope)\nGenomes\nFamilies\nMarker gene(s)\n\n\n\n\nGiant viruses\nBamfordvirae\nNucleocytoviricota\n221\n15\natpase, dnapol, majorcapsid, primase, rnapol1, rnapol2, tf2s, vltf3\n\n\nPhages\nHeunggongvirae\nPantevenvirales\n360\n3\ng23\n\n\nRNA viruses\nOrthornavirae\nMultiple phyla\n7,443\n136\nrdrp\n\n\n\nThe counts above describe genomes with at least one retained marker in the final VirMarkDB output. Taxonomy from Kingdom to Species is derived from the ICTV VMR; manually added genomes follow the same taxonomy fields. See Workflow → Additional genome inputs for how these are incorporated."
+    "text": "VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource VMR_MSL41.v1.20260729.\n\n\n\n\n\n\n\n\n\n\n\n\nGroup\nKingdom\nPhylum (scope)\nGenomes\nFamilies\nMarker gene(s)\n\n\n\n\nGiant viruses\nBamfordvirae\nNucleocytoviricota\n221\n15\natpase, dnapol, majorcapsid, primase, rnapol1, rnapol2, tf2s, vltf3\n\n\nPhages\nHeunggongvirae\nPantevenvirales\n360\n3\ng23\n\n\nRNA viruses\nOrthornavirae\nMultiple phyla\n7,817\n137\nrdrp\n\n\n\nThe counts above describe genomes with at least one retained marker in the final VirMarkDB output. Taxonomy from Kingdom to Species is derived from the ICTV VMR; manually added genomes follow the same taxonomy fields. See Workflow → Additional genome inputs for how these are incorporated."
   },
   {
     "objectID": "database.html#taxonomic-scope",
     "href": "database.html#taxonomic-scope",
     "title": "Database",
     "section": "",
-    "text": "VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource VMR_MSL41.v1.20260729.\n\n\n\n\n\n\n\n\n\n\n\n\nGroup\nKingdom\nPhylum (scope)\nGenomes\nFamilies\nMarker gene(s)\n\n\n\n\nGiant viruses\nBamfordvirae\nNucleocytoviricota\n221\n15\natpase, dnapol, majorcapsid, primase, rnapol1, rnapol2, tf2s, vltf3\n\n\nPhages\nHeunggongvirae\nPantevenvirales\n360\n3\ng23\n\n\nRNA viruses\nOrthornavirae\nMultiple phyla\n7,443\n136\nrdrp\n\n\n\nThe counts above describe genomes with at least one retained marker in the final VirMarkDB output. Taxonomy from Kingdom to Species is derived from the ICTV VMR; manually added genomes follow the same taxonomy fields. See Workflow → Additional genome inputs for how these are incorporated."
+    "text": "VirMarkDB currently covers three viral groups, targeted through marker-specific strategies. Taxonomy is derived from the ICTV Virus Metadata Resource VMR_MSL41.v1.20260729.\n\n\n\n\n\n\n\n\n\n\n\n\nGroup\nKingdom\nPhylum (scope)\nGenomes\nFamilies\nMarker gene(s)\n\n\n\n\nGiant viruses\nBamfordvirae\nNucleocytoviricota\n221\n15\natpase, dnapol, majorcapsid, primase, rnapol1, rnapol2, tf2s, vltf3\n\n\nPhages\nHeunggongvirae\nPantevenvirales\n360\n3\ng23\n\n\nRNA viruses\nOrthornavirae\nMultiple phyla\n7,817\n137\nrdrp\n\n\n\nThe counts above describe genomes with at least one retained marker in the final VirMarkDB output. Taxonomy from Kingdom to Species is derived from the ICTV VMR; manually added genomes follow the same taxonomy fields. See Workflow → Additional genome inputs for how these are incorporated."
   },
   {
     "objectID": "database.html#marker-genes",
@@ -235,7 +235,7 @@
     "href": "index.html#at-a-glance",
     "title": "VirMarkDB",
     "section": "At a glance",
-    "text": "At a glance\n\n\n3\nviral groups\n\n\n10\nmarker genes\n\n\n8,024\ngenomes"
+    "text": "At a glance\n\n\n3\nviral groups\n\n\n10\nmarker genes\n\n\n8,398\ngenomes"
   },
   {
     "objectID": "index.html#where-to-go-next",
