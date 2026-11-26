@@ -3,7 +3,6 @@ input/ncbi_taxonomy
 output
 *out
 *.json
-.gitignore
 
 # Quarto website
 website/_site/
@@ -17,3 +16,7 @@ website/*.utf8.md
 .Rhistory
 .RData
 .Rproj.user/
+
+work
+.nextflow*
+conda-cache/

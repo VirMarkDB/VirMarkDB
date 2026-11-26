@@ -1,17 +1,16 @@
 library(tidyverse)
 
 # Config
-ictv_xlsx <- "VMR_MSL41.v1.20260729.xlsx"
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) != 1L) {
+  stop("Usage: Rscript generate_manifest.R <ictv_version>")
+}
+
+ictv_xlsx <- paste0(args[[1]], ".xlsx")
 manual_gen_ncbi <- "input/manual_genomes_ncbi.tsv"
 manual_gen_priv <- "input/manual_genomes_private.tsv"
 map_file <- "input/mapfile.tsv"
-out_tsv <- "output/config/manifest_genomes.tsv"
-genomes_private_path <- "input/private_genomes"
-out_genomes <- "output/genomes"
-
-dir.create("output")
-dir.create("output/config", recursive = TRUE)
-dir.create(out_genomes, recursive = TRUE)
+out_tsv <- "manifest_genomes.tsv"
 
 taxo_cols <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 
@@ -93,58 +92,26 @@ genomes %>%
   filter(n > 1) %>%
   {
     if (nrow(.)) {
-      write_tsv(., "output/config/dup_ids_check.tsv")
+      write_tsv(., "dup_ids_check.tsv")
     }
   }
 
 # Export manifest
+genomes
 write_tsv(genomes, out_tsv)
 
 # Export cleaned map
-write_tsv(marker_map, "output/config/marker_taxo_map.tsv")
+marker_map
+write_tsv(marker_map, "marker_taxo_map.tsv")
 
-# Genome -> marker_group_id
-genome_marker_map <- tibble()
 
-for (i in seq_len(nrow(marker_map))) {
-  genome_marker_map <- bind_rows(
-    genome_marker_map,
-    genomes %>%
-      filter(.data[[marker_map$taxo_rank[[i]]]] == marker_map$taxo_value[[i]]) %>%
-      mutate(
-        group_id = marker_map$group_id[[i]],
-        marker = marker_map$marker[[i]],
-        marker_group_id = marker_map$marker_group_id[[i]]
-      ) %>%
-      select(
-        virus_id, taxo_cols, group_id, marker, marker_group_id
-      )
-  )
-}
-
-genome_marker_map <- genome_marker_map %>%
+# Associer chaque génome aux marqueurs prévus pour sa taxonomie.
+genome_marker_map <- lapply(seq_len(nrow(marker_map)), function(i) {
+  genomes %>%
+    filter(.data[[marker_map$taxo_rank[[i]]]] == marker_map$taxo_value[[i]]) %>%
+    transmute(virus_id, marker_group_id = marker_map$marker_group_id[[i]])
+}) %>%
+  bind_rows() %>%
   distinct()
 
-write_tsv(genome_marker_map, "output/config/genome_marker_map.tsv")
-
-
-
-# Manage DNA files 
-
-# Download genomes by accession
-source("scripts/utils/down_ncbi.R") 
-
-# Merge genomes sources
-private_files <- list.files(genomes_private_path, full.names = TRUE)
-
-
-if (length(private_files) > 0) {
-  for (file in private_files) {
-    file_name <- basename(file) 
-    file.copy(from = file, to = file.path(out_genomes, file_name), overwrite = FALSE)
-  }
-}
-
-
-# Manage references protein
-source("scripts/utils/prepare_ref_protein.R")
+write_tsv(genome_marker_map, "genome_marker_map.tsv")
