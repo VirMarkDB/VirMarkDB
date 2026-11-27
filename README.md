@@ -78,6 +78,35 @@ cover all manifest-eligible genomes, including those outside the current
 plots hardcoded for three viral groups. Website source files are not overwritten;
 tables and PDF/PNG figures are published in `output/statistics/analysis/`.
 
+## Automatic workflow diagrams
+
+The pipeline keeps the native Nextflow `reports/dag.html` and automatically
+extracts `reports/dag.mmd` and renders `reports/virmarkdb-metro.svg` under
+`outdir`. Run `nextflow run main.nf -preview` to generate diagrams without
+running the analyses; add `--run_assessment --nr_database /path/to/nr` to
+include the assessment branch.
+
+For a complete diagram including assessment without running analyses or requiring
+an installed NR database, generate a separate preview:
+
+```bash
+nextflow run main.nf -preview --run_assessment --nr_database /preview/nr \
+  --outdir output/workflow-preview
+```
+
+Open `output/workflow-preview/reports/virmarkdb-metro.svg`. The NR path is a
+placeholder used only in preview mode. Normal runs still require a real database
+and explicit `--run_assessment` to execute assessment.
+
+Install `nf-metro` with `pip install nf-metro` in the environment that launches
+Nextflow. Diagram rendering runs locally during shutdown after successful completion,
+including previews, once Nextflow has written its reports. Rendering messages
+appear in the terminal. If `nf-metro` is unavailable,
+the HTML and Mermaid files remain available. Disable automatic conversion with
+`--metro_map false`. The native DAG path can be set with `--dag_file`; use an
+HTML or MMD extension and prefer this option over `-with-dag` so the automatic
+renderer follows the same path.
+
 ## Nextflow genome processing
 
 ```bash
